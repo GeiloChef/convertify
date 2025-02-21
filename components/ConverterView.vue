@@ -10,11 +10,20 @@
             <label for="valueFrom" class="font-bold block mb-2">
               {{ fromUnit.name }}
             </label>
-            <InputNumber
+
+            <InputGroup>
+              <InputNumber
                 v-model="valueFrom"
                 inputId="valueFrom"
+                inputClass="text-right"
+                size="large"
+                mode="decimal"
+                :minFractionDigits="0"
+                :maxFractionDigits="12"
                 fluid
                 @input="onInputFrom($event.value)" />
+              <InputGroupAddon>{{ fromUnit.symbol }}</InputGroupAddon>
+            </InputGroup>
           </div>
 
           <Icon icon="right-left" size="2xl" class="mt-7"></Icon>
@@ -23,11 +32,19 @@
             <label for="valueTo" class="font-bold block mb-2">
               {{ toUnit.name }}
             </label>
-            <InputNumber
-                v-model="valueTo"
-                inputId="valueTo"
-                fluid
-                @input="onInputTo($event.value)" />
+            <InputGroup>
+              <InputNumber
+                  v-model="valueTo"
+                  inputId="valueTo"
+                  inputClass="text-right"
+                  size="large"
+                  mode="decimal"
+                  :minFractionDigits="0"
+                  :maxFractionDigits="12"
+                  fluid
+                  @input="onInputTo($event.value)" />
+              <InputGroupAddon>{{ toUnit.symbol }}</InputGroupAddon>
+            </InputGroup>
           </div>
         </div>
       </template>
