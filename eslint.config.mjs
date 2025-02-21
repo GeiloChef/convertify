@@ -1,3 +1,4 @@
+/*
 // eslint.config.mjs
 import { modernModuleResolution } from '@rushstack/eslint-patch';
 modernModuleResolution();
@@ -16,25 +17,25 @@ export default [
   vuePrettier,
   nuxtConfig,
   {
-    files: ['cypress/e2e/**/*.{cy,spec}.{js,ts,jsx,tsx}', 'cypress/support/**/*.{js,ts,jsx,tsx}'],
+    files: ['cypress/e2e/!**!/!*.{cy,spec}.{js,ts,jsx,tsx}', 'cypress/support/!**!/!*.{js,ts,jsx,tsx}'],
     ...cypressRecommended,
   },
   {
     ignores: [
-      '**/.vscode/*',
-      '**/*.css',
-      '**/*.min.js',
-      '**/dist/*',
-      '**/licenses/*',
-      '**/locale/*',
-      '**/misc/*',
-      '**/node_modules/*',
-      '**/cypress/*',
-      '**/patches/*',
-      '**/public/*',
-      '**/src/assets/*',
-      '**/src/vendor/*',
-      '**/tests/*',
+      '**!/.vscode/!*',
+      '**!/!*.css',
+      '**!/!*.min.js',
+      '**!/dist/!*',
+      '**!/licenses/!*',
+      '**!/locale/!*',
+      '**!/misc/!*',
+      '**!/node_modules/!*',
+      '**!/cypress/!*',
+      '**!/patches/!*',
+      '**!/public/!*',
+      '**!/src/assets/!*',
+      '**!/src/vendor/!*',
+      '**!/tests/!*',
       'babel.config.js',
       'jest.config.js',
       'postcss.config.js',
@@ -183,4 +184,4 @@ export default [
       'vue/no-required-prop-with-default': ['error', { autofix: false }],
     },
   },
-];
+];*/

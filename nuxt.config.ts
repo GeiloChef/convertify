@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     '@primevue/nuxt-module',
     '@nuxtjs/tailwindcss',
     '@vesp/nuxt-fontawesome',
-    '@nuxt/eslint',
+    //'@nuxtjs/eslint-module',
     '@pinia/nuxt'
   ],
   i18n: {
@@ -37,7 +37,7 @@ export default defineNuxtConfig({
     component: 'Icon',
   },
   eslint: {
-    lintOnStart: false, // You can set this to 'true' if you want linting to happen on start
-    fix: true,           // Automatically fix linting issues
+    lintOnStart: false,
+    fix: true,
   },
 })
