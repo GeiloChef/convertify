@@ -1,6 +1,11 @@
 {
   "welcome": "Welcome to the best converter!",
   "unit": {
-    "meter": "Meter"
+    "meter": "Meter",
+    "kilometer": "Kilometer"
+  },
+  "symbol": {
+    "meter": "m",
+    "kilometer" : "km"
   }
 }
