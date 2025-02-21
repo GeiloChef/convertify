@@ -31,7 +31,7 @@ export default defineNuxtConfig({
   },
   fontawesome: {
     icons: {
-      solid: ['cog', 'trash' ],
+      solid: ['cog', 'trash', 'right-left' ],
     },
     component: 'Icon',
   }
