@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <Button :label="$t('welcome')" />
-    <Icon icon="cog" />
-  </div>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
