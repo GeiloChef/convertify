@@ -79,7 +79,7 @@
 
 import {computed} from "vue";
 import {useRoute} from "nuxt/app";
-import {UnitId, UnitType} from "../../../models/Unit.Models";
+import {UnitDataModel, UnitGroup, UnitType} from "../../../models/Unit.Models";
 import {Unit} from "../../../models/Unit.Class";
 
 
@@ -91,35 +91,44 @@ const unitStore = useUnitStore();
 const valueFrom = ref(0);
 const valueTo = ref(0);
 
-const units = ref(createUnitDataModel());
+const units = ref<UnitDataModel>(createUnitDataModel());
 
 const unitType = computed((): UnitType => {
   return route.params.type as UnitType;
 });
 
-const unitsForCurrentType = computed((): Unit[] => {
+const unitsForCurrentType = computed((): UnitGroup[] => {
   return units.value[unitType.value];
 })
 
 const fromUnit = computed((): Unit => {
-  return unitsForCurrentType.value.find(unit => unit.id === route.params.from)
+  return unitsForCurrentType.value
+      .flatMap(group => group.items) // Flatten all units into a single array
+      .find(unit => unit.id === route.params.from);
 });
 
 const toUnit = computed((): Unit => {
-  return unitsForCurrentType.value.find(unit => unit.id === route.params.to)
+  return unitsForCurrentType.value
+      .flatMap(group => group.items) // Flatten all units into a single array
+      .find(unit => unit.id === route.params.to);
 })
 
 const selectableFromUnitOptions = computed(() => {
-  return unitsForCurrentType.value.filter((unit: Unit) => {
-    return unit.id !== toUnit.value.id
-  })
+  return unitsForCurrentType.value
+      .map(group => ({
+        ...group, // Keep the original group properties
+        items: group.items.filter((unit: Unit) => unit.id !== toUnit.value?.id) // Filter units within the group
+      }))
+      .filter(group => group.items.length > 0); // Remove empty groups
 });
 
 const selectableToUnitOptions = computed(() => {
-  return unitsForCurrentType.value.filter((unit: Unit) => {
-    return unit.type === fromUnit.value.type &&
-        unit.id !== fromUnit.value.id
-  })
+  return unitsForCurrentType.value
+      .map(group => ({
+        ...group,
+        items: group.items.filter((unit: Unit) => unit.id !== fromUnit.value?.id)
+      }))
+      .filter(group => group.items.length > 0);
 });
 
 const onInputFrom = (value: number): void => {

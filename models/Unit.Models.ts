@@ -39,6 +39,12 @@ export enum UnitType {
   Length = "length"
 }
 
+export interface UnitGroup {
+  label: string,
+  code: string,
+  items: Unit[]
+}
+
 export type UnitDataModel = {
-  [key in UnitType]: Unit[]; // Automatically adds a property for each UnitType
+  [key in UnitType]: UnitGroup[]; // Automatically adds a property for each UnitType
 };
