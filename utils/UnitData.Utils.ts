@@ -7,6 +7,7 @@ export const getLengthUnits = (): Unit[] => {
     return [
       new Unit(UnitId.Meter, t('unit.meter'), t('symbol.meter'), UnitType.Length, 1),
       new Unit(UnitId.KiloMeter, t('unit.kilometer'), t('symbol.kilometer'), UnitType.Length, 0.001),
+      new Unit(UnitId.CentiMeter, t('unit.centimeter'), t('symbol.centimeter'), UnitType.Length, 100),
     ]
   } else {
     return []
