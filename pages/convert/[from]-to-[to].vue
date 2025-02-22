@@ -29,13 +29,20 @@
                     v-model="fromUnit"
                     :options="selectableFromUnitOptions"
                     class="border-0"
-                    optionLabel="symbol"
+                    optionLabel="name"
                     @change="onChangeSelectedFromUnit($event.value)" />
               </InputGroupAddon>
             </InputGroup>
           </div>
 
-          <Icon icon="right-left" size="2xl" class="mt-7"></Icon>
+          <Button
+              class="mt-8"
+              severity="secondary"
+              @click="switchConversion">
+            <Icon
+                icon="right-left"
+                size="2xl" />
+          </Button>
 
           <div class="flex-auto">
             <label for="valueTo" class="font-bold block mb-2">
@@ -57,7 +64,7 @@
                     v-model="toUnit"
                     :options="selectableToUnitOptions"
                     class="border-0"
-                    optionLabel="symbol"
+                    optionLabel="name"
                     @change="onChangeSelectedToUnit($event.value)" />
               </InputGroupAddon>
             </InputGroup>
@@ -125,6 +132,10 @@ const onChangeSelectedFromUnit = (newSelectedUnit: Unit): void => {
   if (route.params.from !== newSelectedUnit.id) {
     router.push(`/convert/${newSelectedUnit.id}-to-${route.params.to}?fromValue=${valueFrom.value}`);
   }
+}
+
+const switchConversion = (): void => {
+  router.push(`/convert/${route.params.to}-to-${route.params.from}?fromValue=${valueTo.value}`);
 }
 
 if (watchEffect) {
