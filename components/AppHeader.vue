@@ -15,7 +15,7 @@ import {MenuItem} from "primevue/menuitem";
 const items = ref<MenuItem[]>([
   {
     label: 'File',
-    icon: 'pi pi-file',
+    icon: 'cog',
     items: [
       {
         label: 'New',
@@ -27,29 +27,5 @@ const items = ref<MenuItem[]>([
       }
     ]
   },
-  {
-    label: 'Search',
-    icon: 'pi pi-search',
-  },
-  {
-    separator: true
-  },
-  {
-    label: 'Sync',
-    icon: 'pi pi-cloud',
-    items: [
-      {
-        label: 'Import',
-        icon: 'pi pi-cloud-download',
-/*        command: () => {
-          toast.add({ severity: 'info', summary: 'Downloads', detail: 'Downloaded from cloud', life: 3000 });
-        }*/
-      },
-      {
-        label: 'Export',
-        icon: 'pi pi-cloud-upload',
-      }
-    ]
-  }
 ]);
 </script>
