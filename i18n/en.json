@@ -1,11 +1,15 @@
 {
-  "welcome": "Welcome to the best converter!",
-  "unit": {
-    "meter": "Meter",
-    "kilometer": "Kilometer"
-  },
+  "best-way-to-convert": "The best way to convert {from} to {to}!",
+  "convertify": "Convertify",
   "symbol": {
-    "meter": "m",
-    "kilometer" : "km"
-  }
+    "centimeter": "cm",
+    "kilometer": "km",
+    "meter": "m"
+  },
+  "unit": {
+    "centimeter": "Centimeter",
+    "kilometer": "Kilometer",
+    "meter": "Meter"
+  },
+  "welcome": "Welcome to the best converter!"
 }

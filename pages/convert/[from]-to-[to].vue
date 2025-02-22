@@ -1,7 +1,9 @@
 <template>
   <div class="flex flex-col gap-4 px-36">
-    <h1>{{ $t('convertify') }}</h1>
-    <h2>{{ $t('best-way-to-convert') }}</h2>
+    <div class="flex flex-col gap-4 mt-10 text-center">
+      <h1 class="text-4xl text-primary">{{ $t('convertify') }}</h1>
+      <h2 class="text-xl">{{ $t('best-way-to-convert', {from: fromUnit.name, to: toUnit.name}) }}</h2>
+    </div>
 
     <Card>
       <template #content>
@@ -22,7 +24,14 @@
                   :maxFractionDigits="12"
                   fluid
                   @input="onInputFrom($event.value)" />
-              <InputGroupAddon>{{ fromUnit.symbol }}</InputGroupAddon>
+              <InputGroupAddon>
+                <Select
+                    v-model="fromUnit"
+                    :options="selectableFromUnitOptions"
+                    class="border-0"
+                    optionLabel="symbol"
+                    @change="onChangeSelectedFromUnit($event.value)" />
+              </InputGroupAddon>
             </InputGroup>
           </div>
 
@@ -43,7 +52,14 @@
                   :maxFractionDigits="12"
                   fluid
                   @input="onInputTo($event.value)" />
-              <InputGroupAddon>{{ toUnit.symbol }}</InputGroupAddon>
+              <InputGroupAddon>
+                <Select
+                    v-model="toUnit"
+                    :options="selectableToUnitOptions"
+                    class="border-0"
+                    optionLabel="symbol"
+                    @change="onChangeSelectedToUnit($event.value)" />
+              </InputGroupAddon>
             </InputGroup>
           </div>
         </div>
@@ -73,12 +89,25 @@ const test = 'test';
 const units = ref(createUnitDataModel());
 
 const fromUnit = computed((): Unit => {
-  return units.value.find(unit => unit.id === UnitId.Meter)
+  return units.value.find(unit => unit.id === route.params.from)
 })
 
 const toUnit = computed((): Unit => {
-  return units.value.find(unit => unit.id === UnitId.KiloMeter)
+  return units.value.find(unit => unit.id === route.params.to)
 })
+
+const selectableFromUnitOptions = computed(() => {
+  return units.value.filter((unit: Unit) => {
+    return unit.id !== toUnit.value.id
+  })
+});
+
+const selectableToUnitOptions = computed(() => {
+  return units.value.filter((unit: Unit) => {
+    return unit.type === fromUnit.value.type &&
+        unit.id !== fromUnit.value.id
+  })
+});
 
 const onInputFrom = (value: number): void => {
   valueTo.value = fromUnit.value.convert(value, toUnit.value)
@@ -86,5 +115,30 @@ const onInputFrom = (value: number): void => {
 
 const onInputTo = (value: number): void => {
   valueFrom.value = toUnit.value.convert(value, fromUnit.value)
+}
+const onChangeSelectedToUnit = (newSelectedUnit: Unit): void => {
+  if (route.params.to !== newSelectedUnit.id) {
+    router.push(`/convert/${fromUnit.value.id}-to-${newSelectedUnit.id}?toValue=${valueTo.value}`);
+  }
+}
+const onChangeSelectedFromUnit = (newSelectedUnit: Unit): void => {
+  if (route.params.from !== newSelectedUnit.id) {
+    router.push(`/convert/${newSelectedUnit.id}-to-${route.params.to}?fromValue=${valueFrom.value}`);
+  }
+}
+
+if (watchEffect) {
+  watchEffect(() => {
+    console.log(route.query);
+    if (route.query.fromValue) {
+      valueFrom.value = route.query.fromValue;
+      onInputFrom(route.query.fromValue as Number);
+    }
+
+    if (route.query.toValue) {
+      valueTo.value = route.query.toValue;
+      onInputTo(route.query.toValue as Number);
+    }
+  })
 }
 </script>
