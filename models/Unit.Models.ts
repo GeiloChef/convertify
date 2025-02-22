@@ -39,6 +39,6 @@ export enum UnitType {
   Length = "length"
 }
 
-export interface UnitDataModel {
-  length: Unit[]
-}
+export type UnitDataModel = {
+  [key in UnitType]: Unit[]; // Automatically adds a property for each UnitType
+};

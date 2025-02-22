@@ -57,6 +57,6 @@ export const getLengthUnits = (): Unit[] => {
 
 export const createUnitDataModel = (): UnitDataModel => {
   return {
-    length: getLengthUnits()
+    [UnitType.Length]: getLengthUnits(),
   };
 }
