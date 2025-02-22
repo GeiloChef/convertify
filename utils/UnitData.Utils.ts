@@ -1,5 +1,5 @@
 import { Unit } from "../models/Unit.Class";
-import { UnitId, UnitType} from "../models/Unit.Models";
+import {UnitDataModel, UnitId, UnitType} from "../models/Unit.Models";
 
 export const getLengthUnits = (): Unit[] => {
   if (useI18n) {
@@ -55,6 +55,8 @@ export const getLengthUnits = (): Unit[] => {
   }
 }
 
-export const createUnitDataModel = (): Unit[] => {
-  return getLengthUnits();
+export const createUnitDataModel = (): UnitDataModel => {
+  return {
+    length: getLengthUnits()
+  };
 }

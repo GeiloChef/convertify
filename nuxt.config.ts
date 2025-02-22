@@ -8,15 +8,26 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   nitro: {
     prerender: {
-      routes: () => {
-        const units = createUnitDataModel();
-        const unitIds = units.map(unit => unit.id);
+      routes: (): string[] => {
+        const unitDataModel = createUnitDataModel(); // Should return { length: Unit[], weight: Unit[], ... }
 
-        return unitIds.flatMap(from =>
-          unitIds
-            .filter(to => from !== to)
-            .map(to => `/convert/${from}-to-${to}`)
-        );
+        if (!unitDataModel || typeof unitDataModel !== "object") {
+          console.warn("Invalid unitDataModel structure");
+          return [];
+        }
+
+        return Object.entries(unitDataModel).flatMap(([type, units]) => {
+          if (!Array.isArray(units)) {
+            console.warn(`Skipping invalid unit type: ${type}`);
+            return [];
+          }
+
+          return units.flatMap(from =>
+            units
+              .filter(to => from.id !== to.id)
+              .map(to => `/convert/${type}/${from.id}-to-${to.id}`)
+          );
+        });
       }
     }
   },
@@ -25,7 +36,6 @@ export default defineNuxtConfig({
     '@primevue/nuxt-module',
     '@nuxtjs/tailwindcss',
     '@vesp/nuxt-fontawesome',
-    //'@nuxtjs/eslint-module',
     '@pinia/nuxt'
   ],
   i18n: {
@@ -51,9 +61,5 @@ export default defineNuxtConfig({
       solid: ['cog', 'trash', 'right-left' ],
     },
     component: 'Icon',
-  },
-  eslint: {
-    lintOnStart: false,
-    fix: true,
-  },
+  }
 })

@@ -79,8 +79,8 @@
 
 import {computed} from "vue";
 import {useRoute} from "nuxt/app";
-import {UnitId} from "../../models/Unit.Models";
-import {Unit} from "../../models/Unit.Class";
+import {UnitId, UnitType} from "../../../models/Unit.Models";
+import {Unit} from "../../../models/Unit.Class";
 
 
 const route = useRoute();
@@ -91,26 +91,32 @@ const unitStore = useUnitStore();
 const valueFrom = ref(0);
 const valueTo = ref(0);
 
-const test = 'test';
-
 const units = ref(createUnitDataModel());
 
-const fromUnit = computed((): Unit => {
-  return units.value.find(unit => unit.id === route.params.from)
+const unitType = computed((): UnitType => {
+  return route.params.type as UnitType;
+});
+
+const unitsForCurrentType = computed((): Unit[] => {
+  return units.value[unitType.value];
 })
 
+const fromUnit = computed((): Unit => {
+  return unitsForCurrentType.value.find(unit => unit.id === route.params.from)
+});
+
 const toUnit = computed((): Unit => {
-  return units.value.find(unit => unit.id === route.params.to)
+  return unitsForCurrentType.value.find(unit => unit.id === route.params.to)
 })
 
 const selectableFromUnitOptions = computed(() => {
-  return units.value.filter((unit: Unit) => {
+  return unitsForCurrentType.value.filter((unit: Unit) => {
     return unit.id !== toUnit.value.id
   })
 });
 
 const selectableToUnitOptions = computed(() => {
-  return units.value.filter((unit: Unit) => {
+  return unitsForCurrentType.value.filter((unit: Unit) => {
     return unit.type === fromUnit.value.type &&
         unit.id !== fromUnit.value.id
   })
@@ -141,6 +147,7 @@ const switchConversion = (): void => {
 if (watchEffect) {
   watchEffect(() => {
     console.log(route.query);
+    console.log(route);
     if (route.query.fromValue) {
       valueFrom.value = route.query.fromValue;
       onInputFrom(route.query.fromValue as Number);

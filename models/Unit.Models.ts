@@ -36,5 +36,9 @@ export enum UnitId {
 }
 
 export enum UnitType {
-  Length = "LENGTH"
+  Length = "length"
+}
+
+export interface UnitDataModel {
+  length: Unit[]
 }
