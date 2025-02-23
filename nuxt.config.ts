@@ -9,24 +9,33 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       routes: (): string[] => {
-        const unitDataModel = createUnitDataModel(); // Should return { length: Unit[], weight: Unit[], ... }
+        const unitDataModel = createUnitDataModel(); // Should return { length: UnitGroup[], weight: UnitGroup[], ... }
 
         if (!unitDataModel || typeof unitDataModel !== "object") {
           console.warn("Invalid unitDataModel structure");
           return [];
         }
 
-        return Object.entries(unitDataModel).flatMap(([type, units]) => {
-          if (!Array.isArray(units)) {
+        return Object.entries(unitDataModel).flatMap(([type, unitGroups]) => {
+          if (!Array.isArray(unitGroups)) {
             console.warn(`Skipping invalid unit type: ${type}`);
             return [];
           }
 
-          return units.flatMap(from =>
-            units
-              .filter(to => from.id !== to.id)
-              .map(to => `/convert/${type}/${from.id}-to-${to.id}`)
-          );
+          // For each UnitGroup, we need to handle its 'items' array (which is a Unit[])
+          return unitGroups.flatMap(group => {
+            if (!Array.isArray(group.items)) {
+              console.warn(`Skipping invalid unit group: ${group.label}`);
+              return [];
+            }
+
+            // Now iterate over the 'items' of each UnitGroup to generate the routes
+            return group.items.flatMap(from =>
+              group.items
+                .filter(to => from.id !== to.id)
+                .map(to => `/convert/${type}/${from.id}-to-${to.id}`)
+            );
+          });
         });
       }
     }
