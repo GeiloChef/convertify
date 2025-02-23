@@ -10,7 +10,6 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxt/eslint": "^1.0.1",
     "@nuxtjs/i18n": "^9.0.0-rc.2",
     "@nuxtjs/tailwindcss": "^6.13.1",
     "@pinia/nuxt": "^0.10.1",
@@ -23,12 +22,10 @@
     "vue-router": "latest"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.26.8",
     "@babel/preset-env": "^7.26.9",
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "@fortawesome/free-regular-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
-    "@nuxt/eslint-config": "^1.0.1",
     "@nuxtjs/eslint-module": "^4.1.0",
     "@primevue/nuxt-module": "^4.2.5",
     "@rushstack/eslint-patch": "^1.10.5",
@@ -39,9 +36,9 @@
     "@vue/eslint-config-typescript": "^14.4.0",
     "eslint": "^9.21.0",
     "eslint-config-prettier": "^10.0.1",
-    "eslint-plugin-cypress": "^4.1.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-vue": "^9.32.0",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "vue-eslint-parser": "^9.4.3"
   }
 }

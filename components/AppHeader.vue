@@ -1,8 +1,11 @@
 <template>
   <Menubar :model="items">
     <template #item="{ item, props }">
-      <div class="cursor-pointer px-2" v-bind="props">
-        <Icon v-if="item.icon" :icon="item.icon" class="mr-2" />
+      <div class="cursor-pointer px-2"
+           v-bind="props">
+        <Icon v-if="item.icon"
+              :icon="item.icon"
+              class="mr-2" />
         <span>{{ item.label }}</span>
       </div>
     </template>

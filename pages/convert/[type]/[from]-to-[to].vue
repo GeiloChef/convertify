@@ -1,28 +1,31 @@
 <template>
   <div class="flex flex-col gap-4 px-36">
     <div class="flex flex-col gap-4 mt-10 text-center">
-      <h1 class="text-4xl text-primary">{{ $t('convertify') }}</h1>
-      <h2 class="text-xl">{{ $t('best-way-to-convert', {from: fromUnit.name, to: toUnit.name}) }}</h2>
+      <h1 class="text-4xl text-primary">
+        {{ $t('convertify') }}
+      </h1>
+      <h2 class="text-xl">
+        {{ $t('best-way-to-convert', {from: fromUnit.name, to: toUnit.name}) }}
+      </h2>
     </div>
-
     <Card>
       <template #content>
         <div class="flex flex-row gap-8 justify-center items-center">
           <UnitConverterInput
-              v-model:input-value="valueFrom"
-              v-model:selected-unit="fromUnit"
-              input-id="fromValue"
-              :selectableUnitOptions="selectableFromUnitOptions"
-              @update:selectedUnit="onChangeSelectedFromUnit"
-              @update:inputValue="onInputFrom"/>
+            v-model:input-value="valueFrom"
+            v-model:selected-unit="fromUnit"
+            input-id="fromValue"
+            :selectableUnitOptions="selectableFromUnitOptions"
+            @update:selectedUnit="onChangeSelectedFromUnit"
+            @update:inputValue="onInputFrom"/>
 
           <Button
-              class="mt-8"
-              severity="secondary"
-              @click="switchConversion">
+            class="mt-8"
+            severity="secondary"
+            @click="switchConversion">
             <Icon
-                icon="right-left"
-                size="2xl" />
+              icon="right-left"
+              size="2xl" />
           </Button>
 
           <UnitConverterInput
@@ -41,9 +44,8 @@
 <script setup lang="ts">
 
 import {computed} from "vue";
-import {useRoute} from "nuxt/app";
-import {UnitDataModel, UnitGroup, UnitType} from "../../../models/Unit.Models";
-import {Unit} from "../../../models/Unit.Class";
+import {UnitDataModel, UnitGroup, UnitType} from "@/models/Unit.Models";
+import {Unit} from "@/models/Unit.Class";
 
 
 const route = useRoute();
@@ -122,12 +124,12 @@ if (watchEffect) {
     console.log(route);
     if (route.query.fromValue) {
       valueFrom.value = route.query.fromValue;
-      onInputFrom(route.query.fromValue as Number);
+      onInputFrom(route.query.fromValue as number);
     }
 
     if (route.query.toValue) {
       valueTo.value = route.query.toValue;
-      onInputTo(route.query.toValue as Number);
+      onInputTo(route.query.toValue as number);
     }
   })
 }

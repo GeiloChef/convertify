@@ -36,7 +36,8 @@ export default defineNuxtConfig({
     '@primevue/nuxt-module',
     '@nuxtjs/tailwindcss',
     '@vesp/nuxt-fontawesome',
-    '@pinia/nuxt'
+    '@pinia/nuxt',
+    '@nuxtjs/eslint-module'
   ],
   i18n: {
     langDir: '',
@@ -61,5 +62,11 @@ export default defineNuxtConfig({
       solid: ['cog', 'trash', 'right-left' ],
     },
     component: 'Icon',
-  }
+  },
+  eslint: {
+    fix: true,
+    lintOnStart: false,
+    lintOnSave: true,
+    extensions: ['vue', 'js', 'ts', 'tsx'],
+  },
 })

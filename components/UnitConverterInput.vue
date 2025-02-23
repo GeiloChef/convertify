@@ -1,35 +1,36 @@
 <template>
   <div class="flex-auto">
-    <label :for="inputId" class="font-bold block mb-2">
+    <label :for="inputId"
+           class="font-bold block mb-2">
       {{ selectedUnit.name }}
     </label>
     <InputGroup>
       <InputNumber
-          :modelValue="inputValue"
-          :inputId="inputId"
-          inputClass="text-right"
-          size="large"
-          mode="decimal"
-          :minFractionDigits="0"
-          :maxFractionDigits="12"
-          fluid
-          @input="onInputValueChange($event.value)" />
+        :modelValue="inputValue"
+        :inputId="inputId"
+        inputClass="text-right"
+        size="large"
+        mode="decimal"
+        :minFractionDigits="0"
+        :maxFractionDigits="12"
+        fluid
+        @input="onInputValueChange($event.value as number)" />
       <InputGroupAddon>
         <Select
-            :modelValue="selectedUnit"
-            :options="selectableUnitOptions"
-            class="border-0"
-            optionLabel="name"
-            @change="onSelectedUnitChange($event.value)" />
+          :modelValue="selectedUnit"
+          :options="selectableUnitOptions"
+          class="border-0"
+          optionLabel="name"
+          @change="onSelectedUnitChange($event.value)" />
       </InputGroupAddon>
     </InputGroup>
   </div>
 </template>
 
 <script setup lang="ts">
-import {Unit} from "../models/Unit.Class";
+import {Unit} from "@/models/Unit.Class";
 import {PropType, toRefs} from "vue";
-import { UnitGroup } from "../models/Unit.Models";
+import { UnitGroup } from "@/models/Unit.Models";
 
 const emit = defineEmits<{
   (e: 'update:inputValue', value: number): void;
