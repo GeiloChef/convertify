@@ -130,8 +130,8 @@ const onChangeSelectedFromUnit = (newSelectedUnit: Unit): void => {
 
 const switchConversion = (): void => {
   navigateToConverterPage({
-    fromUnit: route.params.from,
-    toUnit: route.params.to,
+    fromUnit: route.params.to,
+    toUnit: route.params.from,
     unitType: fromUnit.value.type,
     valueType: ConverterNavigationValueType.FromValue,
     preSetValue: valueTo.value

@@ -3,7 +3,12 @@
 </template>
 
 <script setup>
-import { navigateTo } from '#app';
+import {navigateToConverterPage} from "@/utils/Routing.Utils.js";
+import {UnitId, UnitType} from "@/models/Unit.Models.js";
 
-navigateTo('/convert/length/centimeter-to-meter', { replace: true });
+navigateToConverterPage({
+  fromUnit: UnitId.CentiMeter,
+  toUnit: UnitId.Inch,
+  unitType: UnitType.Length
+});
 </script>
