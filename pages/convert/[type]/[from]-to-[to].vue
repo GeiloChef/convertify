@@ -1,10 +1,10 @@
 <template>
-  <div class="flex flex-col gap-4 px-36">
+  <div class="flex flex-col gap-4">
     <div class="flex flex-col gap-4 mt-10 text-center">
-      <h1 class="text-4xl text-primary">
+      <h1>
         {{ $t('convertify') }}
       </h1>
-      <h2 class="text-xl">
+      <h2>
         {{ $t('best-way-to-convert', {from: fromUnit.name, to: toUnit.name}) }}
       </h2>
     </div>

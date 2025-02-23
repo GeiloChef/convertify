@@ -6,6 +6,11 @@ import {createUnitDataModel} from "./utils/UnitData.Utils";
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
+  css: [
+    '~/assets/tailwind.css',
+    '~/assets/primevue/tailwind.css',
+    '~/assets/main.css',
+  ],
   nitro: {
     prerender: {
       routes: (): string[] => {
@@ -60,11 +65,13 @@ export default defineNuxtConfig({
       theme: {
         preset: Aura
       }
-    }
+    },
+    cssLayerOrder: 'tailwind-base, primevue, tailwind-utilities',
   },
   tailwindcss: {
     exposeConfig: true,
     viewer: true,
+    plugins: [require('tailwindcss-primeui')]
   },
   fontawesome: {
     icons: {

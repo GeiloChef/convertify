@@ -4,7 +4,7 @@
       <AppHeader />
     </header>
 
-    <main class="content">
+    <main class="content py-16 px-32">
       <slot />
     </main>
   </div>
