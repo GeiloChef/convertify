@@ -140,8 +140,6 @@ const switchConversion = (): void => {
 
 if (watchEffect) {
   watchEffect(() => {
-    console.log(route.query);
-    console.log(route);
     if (route.query.fromValue) {
       valueFrom.value = route.query.fromValue;
       onInputFrom(route.query.fromValue as number);
