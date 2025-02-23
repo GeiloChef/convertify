@@ -46,6 +46,8 @@
 import {computed} from "vue";
 import {UnitDataModel, UnitGroup, UnitType} from "@/models/Unit.Models";
 import {Unit} from "@/models/Unit.Class";
+import {navigateToConverterPage} from "@/utils/Routing.Utils";
+import {ConverterNavigationValueType} from "@/models/Routing.Models";
 
 
 const route = useRoute();
@@ -105,17 +107,35 @@ const onInputTo = (value: number): void => {
 }
 const onChangeSelectedToUnit = (newSelectedUnit: Unit): void => {
   if (route.params.to !== newSelectedUnit.id) {
-    router.push(`/convert/${fromUnit.value.id}-to-${newSelectedUnit.id}?toValue=${valueTo.value}`);
+    navigateToConverterPage({
+      fromUnit: route.params.from,
+      toUnit: newSelectedUnit.id,
+      unitType: fromUnit.value.type,
+      valueType: ConverterNavigationValueType.ToValue,
+      preSetValue: valueTo.value
+    });
   }
 }
 const onChangeSelectedFromUnit = (newSelectedUnit: Unit): void => {
   if (route.params.from !== newSelectedUnit.id) {
-    router.push(`/convert/${newSelectedUnit.id}-to-${route.params.to}?fromValue=${valueFrom.value}`);
+    navigateToConverterPage({
+      fromUnit: newSelectedUnit.id,
+      toUnit: route.params.to,
+      unitType: fromUnit.value.type,
+      valueType: ConverterNavigationValueType.FromValue,
+      preSetValue: valueFrom.value
+    });
   }
 }
 
 const switchConversion = (): void => {
-  router.push(`/convert/${route.params.to}-to-${route.params.from}?fromValue=${valueTo.value}`);
+  navigateToConverterPage({
+    fromUnit: route.params.from,
+    toUnit: route.params.to,
+    unitType: fromUnit.value.type,
+    valueType: ConverterNavigationValueType.FromValue,
+    preSetValue: valueTo.value
+  });
 }
 
 if (watchEffect) {
