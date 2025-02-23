@@ -66,7 +66,5 @@ export default defineNuxtConfig({
   eslint: {
     fix: true,
     lintOnStart: false,
-    lintOnSave: true,
-    extensions: ['vue', 'js', 'ts', 'tsx'],
   },
 })
