@@ -21,7 +21,20 @@
           :options="selectableUnitOptions"
           class="border-0"
           optionLabel="name"
-          @change="onSelectedUnitChange($event.value)" />
+          optionGroupLabel="label"
+          optionGroupChildren="items"
+          @change="onSelectedUnitChange($event.value)">
+          <template #optiongroup="slotProps">
+            <div class="flex items-center">
+              <span>{{ slotProps.option.label }}</span>
+            </div>
+          </template>
+          <template #option="slotProps">
+            <div class="flex items-center">
+              <span class="pl-1">{{ slotProps.option.name }}</span>
+            </div>
+          </template>
+        </Select>
       </InputGroupAddon>
     </InputGroup>
   </div>

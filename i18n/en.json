@@ -1,6 +1,13 @@
 {
   "best-way-to-convert": "The best way to convert {from} to {to}!",
   "convertify": "Convertify",
+  "group": {
+    "metric": "Metric",
+    "imperial": "Imperial",
+    "nautical": "Nautical",
+    "astronomical": "Astronomical",
+    "quantum": "Quantum"
+  },
   "symbol": {
     "meter": "m",
     "kilometer": "km",
