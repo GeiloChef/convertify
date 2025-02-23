@@ -8,32 +8,13 @@
     <Card>
       <template #content>
         <div class="flex flex-row gap-8 justify-center items-center">
-          <div class="flex-auto">
-            <label for="valueFrom" class="font-bold block mb-2">
-              {{ fromUnit.name }}
-            </label>
-
-            <InputGroup>
-              <InputNumber
-                  v-model="valueFrom"
-                  inputId="valueFrom"
-                  inputClass="text-right"
-                  size="large"
-                  mode="decimal"
-                  :minFractionDigits="0"
-                  :maxFractionDigits="12"
-                  fluid
-                  @input="onInputFrom($event.value)" />
-              <InputGroupAddon>
-                <Select
-                    v-model="fromUnit"
-                    :options="selectableFromUnitOptions"
-                    class="border-0"
-                    optionLabel="name"
-                    @change="onChangeSelectedFromUnit($event.value)" />
-              </InputGroupAddon>
-            </InputGroup>
-          </div>
+          <UnitConverterInput
+              v-model:input-value="valueFrom"
+              v-model:selected-unit="fromUnit"
+              input-id="fromValue"
+              :selectableUnitOptions="selectableFromUnitOptions"
+              @update:selectedUnit="onChangeSelectedFromUnit"
+              @update:inputValue="onInputFrom"/>
 
           <Button
               class="mt-8"
@@ -44,31 +25,13 @@
                 size="2xl" />
           </Button>
 
-          <div class="flex-auto">
-            <label for="valueTo" class="font-bold block mb-2">
-              {{ toUnit.name }}
-            </label>
-            <InputGroup>
-              <InputNumber
-                  v-model="valueTo"
-                  inputId="valueTo"
-                  inputClass="text-right"
-                  size="large"
-                  mode="decimal"
-                  :minFractionDigits="0"
-                  :maxFractionDigits="12"
-                  fluid
-                  @input="onInputTo($event.value)" />
-              <InputGroupAddon>
-                <Select
-                    v-model="toUnit"
-                    :options="selectableToUnitOptions"
-                    class="border-0"
-                    optionLabel="name"
-                    @change="onChangeSelectedToUnit($event.value)" />
-              </InputGroupAddon>
-            </InputGroup>
-          </div>
+          <UnitConverterInput
+            v-model:input-value="valueTo"
+            v-model:selected-unit="toUnit"
+            input-id="toValue"
+            :selectableUnitOptions="selectableToUnitOptions"
+            @update:selectedUnit="onChangeSelectedToUnit"
+            @update:inputValue="onInputTo"/>
         </div>
       </template>
     </Card>
@@ -88,8 +51,8 @@ const router = useRouter();
 
 const unitStore = useUnitStore();
 
-const valueFrom = ref(0);
-const valueTo = ref(0);
+const valueFrom = ref<number>(0);
+const valueTo = ref<number>(0);
 
 const units = ref<UnitDataModel>(createUnitDataModel());
 
