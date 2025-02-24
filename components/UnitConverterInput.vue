@@ -2,7 +2,7 @@
   <div class="flex-auto">
     <label :for="inputId"
            class="font-bold block mb-2">
-      {{ selectedUnit.name }}
+      {{ $t(selectedUnit.name) }}
     </label>
     <InputGroup>
       <InputNumber
@@ -26,12 +26,17 @@
           @change="onSelectedUnitChange($event.value)">
           <template #optiongroup="slotProps">
             <div class="flex items-center">
-              <span>{{ slotProps.option.label }}</span>
+              <span>{{ $t(slotProps.option.label) }}</span>
             </div>
           </template>
           <template #option="slotProps">
             <div class="flex items-center">
-              <span class="pl-1">{{ slotProps.option.name }}</span>
+              <span class="pl-1">{{ $t(slotProps.option.name) }}</span>
+            </div>
+          </template>
+          <template #value="slotProps">
+            <div class="flex items-center">
+              <span class="pl-1">{{ $t(slotProps.value.name) }}</span>
             </div>
           </template>
         </Select>

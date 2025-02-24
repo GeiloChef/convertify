@@ -5,7 +5,7 @@
         {{ $t('convertify') }}
       </h1>
       <h2>
-        {{ $t('best-way-to-convert', {from: fromUnit.name, to: toUnit.name}) }}
+        {{ $t('best-way-to-convert', {from: $t(fromUnit.name), to: $t(toUnit.name)}) }}
       </h2>
     </div>
     <Card>
