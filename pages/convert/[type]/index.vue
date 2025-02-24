@@ -9,7 +9,7 @@
     <div v-if="unitGroupsForCurrentUnitType.length">
       <div v-for="(group, index) in unitGroupsForCurrentUnitType"
            :key="group.label">
-        <h3>{{group.label}}</h3>
+        <h3>{{ $t(group.label) }}</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 p-4">
           <UnitSelectionTile
             v-for="unit in group.items"
