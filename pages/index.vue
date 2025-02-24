@@ -4,11 +4,11 @@
 
 <script setup>
 import {navigateToConverterPage} from "@/utils/Routing.Utils.js";
-import {UnitId, UnitType} from "@/models/Unit.Models.js";
+import {LengthUnitId, UnitType} from "@/models/Unit.Models.js";
 
 navigateToConverterPage({
-  fromUnit: UnitId.CentiMeter,
-  toUnit: UnitId.Inch,
+  fromUnit: LengthUnitId.CentiMeter,
+  toUnit: LengthUnitId.Inch,
   unitType: UnitType.Length
 });
 </script>
