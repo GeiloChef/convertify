@@ -6,7 +6,7 @@
       v-show="selected"
       class="text-green-500"
       icon="circle-check" />
-    <span>{{ unit.name }} ({{unit.symbol}})</span>
+    <span>{{ $t(unit.name) }} ({{ $t(unit.symbol) }})</span>
   </div>
 </template>
 
