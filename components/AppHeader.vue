@@ -44,7 +44,6 @@ const currentSelectedType = computed((): UnitType | null => {
 })
 
 const isItemSelected = (itemId: UnitType): boolean => {
-  console.log(itemId, currentSelectedType.value === itemId)
   return currentSelectedType.value && currentSelectedType.value === itemId;
 }
 </script>
