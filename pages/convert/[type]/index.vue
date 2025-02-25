@@ -41,7 +41,7 @@
   })
 
   const unitGroupsForCurrentUnitType = computed((): UnitGroup[] => {
-    return unitDataModel.value[unitType.value];
+    return unitDataModel.value[unitType.value].unitGroups;
   })
 
   const toggleSelectUnit = (unit: Unit) => {

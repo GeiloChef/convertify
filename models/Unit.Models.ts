@@ -94,11 +94,17 @@ export enum UnitType {
 }
 
 export interface UnitGroup {
+  id: string,
   label: string,
-  code: string,
   items: Unit[]
 }
 
+export interface UnitTypeObject {
+  label: string,
+  code: string,
+  unitGroups: UnitGroup[]
+}
+
 export type UnitDataModel = {
-  [key in UnitType]: UnitGroup[]; // Automatically adds a property for each UnitType
+  [key in UnitType]: UnitTypeObject;
 };

@@ -58,14 +58,14 @@ const unitStore = useUnitStore();
 const valueFrom = ref<number>(0);
 const valueTo = ref<number>(0);
 
-const units = ref<UnitDataModel>(createUnitDataModel());
+const unitData = ref<UnitDataModel>(createUnitDataModel());
 
 const unitType = computed((): UnitType => {
   return route.params.type as UnitType;
 });
 
 const unitsForCurrentType = computed((): UnitGroup[] => {
-  return units.value[unitType.value];
+  return unitData.value[unitType.value].unitGroups;
 })
 
 const fromUnit = computed((): Unit => {

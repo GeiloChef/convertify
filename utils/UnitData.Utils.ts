@@ -1,12 +1,12 @@
 /*
 * Links in this file can't be imported with an alias because this file is used for pre-generating
 * Routes inside the nuxt config.
-* */
+*/
 
 import { Unit } from "../models/Unit.Class";
-import {UnitDataModel, UnitGroup, LengthUnitId, UnitType, MassUnitId} from "../models/Unit.Models";
+import {UnitDataModel, LengthUnitId, UnitType, MassUnitId, UnitTypeObject} from "../models/Unit.Models";
 
-export const getLengthUnits = (): UnitGroup[] => {
+export const getLengthUnits = (): UnitTypeObject => {
     const groups = [
       {
         label: "group.metric",
@@ -76,10 +76,14 @@ export const getLengthUnits = (): UnitGroup[] => {
       group.items.sort((a, b) => a.conversionFactor - b.conversionFactor);
     });
 
-    return groups;
+    return {
+      label: 'type.length',
+      id: UnitType.Length,
+      unitGroups: groups
+    };
 }
 
-export const getWeightUnits = (): UnitGroup[] => {
+export const getWeightUnits = (): UnitTypeObject => {
   const groups = [
     {
       label: "group.metric",
@@ -174,7 +178,11 @@ export const getWeightUnits = (): UnitGroup[] => {
     group.items.sort((a, b) => a.conversionFactor - b.conversionFactor);
   });
 
-  return groups;
+  return {
+    label: 'type.weight',
+    id: UnitType.Weight,
+    unitGroups: groups
+  };
 }
 
 
