@@ -31,13 +31,13 @@ export default defineNuxtConfig({
           return [];
         }
         return locales.flatMap(locale => {
-          return Object.entries(unitDataModel).flatMap(([type, unitGroups]) => {
-            if (!Array.isArray(unitGroups)) {
+          return Object.entries(unitDataModel).flatMap(([type, unitTypeObject]) => {
+            if (!Array.isArray(unitTypeObject.unitGroups)) {
               console.warn(`Skipping invalid unit type: ${type}`);
               return [];
             }
 
-            return unitGroups.flatMap(group => {
+            return unitTypeObject.unitGroups.flatMap(group => {
               if (!Array.isArray(group.items)) {
                 console.warn(`Skipping invalid unit group: ${group.label}`);
                 return [];
