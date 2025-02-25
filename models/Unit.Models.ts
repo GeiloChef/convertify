@@ -84,7 +84,7 @@ export enum MassUnitId {
   Talent = "talent",
   Obolus = "obolus",
   Drachma = "drachma",
-  Dram,
+  Dram = "dram",
 }
 
 
