@@ -89,87 +89,87 @@ export const getWeightUnits = (): UnitTypeObject => {
       label: "group.metric",
       code: "metric",
       items: [
-        new Unit(MassUnitId.Megaton, "unit.megaton", "symbol.megaton", UnitType.Weight, 1e9), // 1,000,000,000 kg
-        new Unit(MassUnitId.Kiloton, "unit.kiloton", "symbol.kiloton", UnitType.Weight, 1e6), // 1,000,000 kg
-        new Unit(MassUnitId.Tonne, "unit.tonne", "symbol.tonne", UnitType.Weight, 1000), // 1,000 kg (also called a "metric ton")
-        new Unit(MassUnitId.Megagram, "unit.megagram", "symbol.megagram", UnitType.Weight, 1000), // 1,000 Mg (also called a "metric ton")
-        new Unit(MassUnitId.Quintal, "unit.quintal", "symbol.quintal", UnitType.Weight, 100), // 100 kg (used in agriculture)
-        new Unit(MassUnitId.Kilo, "unit.kilo", "symbol.kilo", UnitType.Weight, 1), // 1 kg
-        new Unit(MassUnitId.Hectogram, "unit.hectogram", "symbol.hectogram", UnitType.Weight, 0.1), // 100 g
-        new Unit(MassUnitId.Decagram, "unit.decagram", "symbol.decagram", UnitType.Weight, 0.01), // 10 g
-        new Unit(MassUnitId.Gram, "unit.gram", "symbol.gram", UnitType.Weight, 0.001), // 1 g
-        new Unit(MassUnitId.Decigram, "unit.decigram", "symbol.decigram", UnitType.Weight, 0.0001), // 0.1 g
-        new Unit(MassUnitId.Centigram, "unit.centigram", "symbol.centigram", UnitType.Weight, 0.00001), // 0.01 g
-        new Unit(MassUnitId.Milligram, "unit.milligram", "symbol.milligram", UnitType.Weight, 0.000001), // 0.001 g
-        new Unit(MassUnitId.Microgram, "unit.microgram", "symbol.microgram", UnitType.Weight, 0.000000001), // 1 µg
-        new Unit(MassUnitId.Nanogram, "unit.nanogram", "symbol.nanogram", UnitType.Weight, 0.000000000001), // 1 ng
-        new Unit(MassUnitId.Picogram, "unit.picogram", "symbol.picogram", UnitType.Weight, 0.000000000000001), // 1 pg
-        new Unit(MassUnitId.Femtogram, "unit.femtogram", "symbol.femtogram", UnitType.Weight, 0.000000000000000001), // 1 fg
-        new Unit(MassUnitId.Attogram, "unit.attogram", "symbol.attogram", UnitType.Weight, 0.000000000000000000001), // 1 ag
+        new Unit(MassUnitId.Megaton, "unit.megaton", "symbol.megaton", UnitType.Weight, 1 / 1e9), // 1,000,000,000 kg
+        new Unit(MassUnitId.Kiloton, "unit.kiloton", "symbol.kiloton", UnitType.Weight, 1 / 1e6), // 1,000,000 kg
+        new Unit(MassUnitId.Tonne, "unit.tonne", "symbol.tonne", UnitType.Weight, 1 / 1000), // 1,000 kg (also called a "metric ton")
+        new Unit(MassUnitId.Megagram, "unit.megagram", "symbol.megagram", UnitType.Weight, 1 / 1000), // 1,000 Mg (also called a "metric ton")
+        new Unit(MassUnitId.Quintal, "unit.quintal", "symbol.quintal", UnitType.Weight, 1 / 100), // 100 kg (used in agriculture)
+        new Unit(MassUnitId.Kilo, "unit.kilo", "symbol.kilo", UnitType.Weight,  1), // 1 kg
+        new Unit(MassUnitId.Hectogram, "unit.hectogram", "symbol.hectogram", UnitType.Weight, 1 / 0.1), // 100 g
+        new Unit(MassUnitId.Decagram, "unit.decagram", "symbol.decagram", UnitType.Weight, 1 / 0.01), // 10 g
+        new Unit(MassUnitId.Gram, "unit.gram", "symbol.gram", UnitType.Weight, 1 / 0.001), // 1 g
+        new Unit(MassUnitId.Decigram, "unit.decigram", "symbol.decigram", UnitType.Weight, 1 / 0.0001), // 0.1 g
+        new Unit(MassUnitId.Centigram, "unit.centigram", "symbol.centigram", UnitType.Weight, 1 / 0.00001), // 0.01 g
+        new Unit(MassUnitId.Milligram, "unit.milligram", "symbol.milligram", UnitType.Weight, 1 / 0.000001), // 0.001 g
+        new Unit(MassUnitId.Microgram, "unit.microgram", "symbol.microgram", UnitType.Weight, 1 / 0.000000001), // 1 µg
+        new Unit(MassUnitId.Nanogram, "unit.nanogram", "symbol.nanogram", UnitType.Weight, 1 / 0.000000000001), // 1 ng
+        new Unit(MassUnitId.Picogram, "unit.picogram", "symbol.picogram", UnitType.Weight, 1 / 0.000000000000001), // 1 pg
+        new Unit(MassUnitId.Femtogram, "unit.femtogram", "symbol.femtogram", UnitType.Weight, 1 / 0.000000000000000001), // 1 fg
+        new Unit(MassUnitId.Attogram, "unit.attogram", "symbol.attogram", UnitType.Weight, 1 / 0.000000000000000000001), // 1 ag
       ],
     },
     {
       label: "group.imperial",
       code: "imperial",
       items: [
-        new Unit(MassUnitId.Ounce, "unit.ounce", "symbol.ounce", UnitType.Weight, 0.0283495),
-        new Unit(MassUnitId.Pound, "unit.pound", "symbol.pound", UnitType.Weight, 0.453592),
-        new Unit(MassUnitId.Stone, "unit.stone", "symbol.stone", UnitType.Weight, 6.35029),
-        new Unit(MassUnitId.QuarterImperial, "unit.quarter-imperial", "symbol.quarter-imperial", UnitType.Weight, 28.3495),
-        new Unit(MassUnitId.QuarterUS, "unit.quarter-us", "symbol.quarter-us", UnitType.Weight, 25),
-        new Unit(MassUnitId.HundredweightUK, "unit.hundredweight-uk", "symbol.hundredweight-uk", UnitType.Weight, 50.8023),
-        new Unit(MassUnitId.HundredweightUS, "unit.hundredweight-us", "symbol.hundredweight-us", UnitType.Weight, 45.3592),
-        new Unit(MassUnitId.ShortTonUS, "unit.short-ton", "symbol.short-ton", UnitType.Weight, 907.1847),
-        new Unit(MassUnitId.LongTonUK, "unit.long-ton", "symbol.long-ton", UnitType.Weight, 1016.05),
+        new Unit(MassUnitId.Ounce, "unit.ounce", "symbol.ounce", UnitType.Weight, 1 / 0.0283495),
+        new Unit(MassUnitId.Pound, "unit.pound", "symbol.pound", UnitType.Weight, 1 / 0.453592),
+        new Unit(MassUnitId.Stone, "unit.stone", "symbol.stone", UnitType.Weight, 1 / 6.35029),
+        new Unit(MassUnitId.QuarterImperial, "unit.quarter-imperial", "symbol.quarter-imperial", UnitType.Weight, 1 / 28.3495),
+        new Unit(MassUnitId.QuarterUS, "unit.quarter-us", "symbol.quarter-us", UnitType.Weight, 1 / 25),
+        new Unit(MassUnitId.HundredweightUK, "unit.hundredweight-uk", "symbol.hundredweight-uk", UnitType.Weight, 1 / 50.8023),
+        new Unit(MassUnitId.HundredweightUS, "unit.hundredweight-us", "symbol.hundredweight-us", UnitType.Weight, 1 / 45.3592),
+        new Unit(MassUnitId.ShortTonUS, "unit.short-ton", "symbol.short-ton", UnitType.Weight, 1 / 907.1847),
+        new Unit(MassUnitId.LongTonUK, "unit.long-ton", "symbol.long-ton", UnitType.Weight, 1 / 1016.05),
       ],
     },
     {
       label: "group.troy-weight",
       code: "troy_weight",
       items: [
-        new Unit(MassUnitId.Grain, "unit.grain", "symbol.grain", UnitType.Weight, 0.0000647989),
-        new Unit(MassUnitId.Carat, "unit.carat", "symbol.carat", UnitType.Weight, 0.0002),
-        new Unit(MassUnitId.TroyOunce, "unit.troy-ounce", "symbol.troy-ounce", UnitType.Weight, 0.0311035),
-        new Unit(MassUnitId.TroyPound, "unit.troy-pound", "symbol.troy-pound", UnitType.Weight, 0.373242),
-        new Unit(MassUnitId.Pennyweight, "unit.pennyweight", "symbol.pennyweight", UnitType.Weight, 0.00155517),
+        new Unit(MassUnitId.Grain, "unit.grain", "symbol.grain", UnitType.Weight, 1 / 0.0000647989),
+        new Unit(MassUnitId.Carat, "unit.carat", "symbol.carat", UnitType.Weight, 1 / 0.0002),
+        new Unit(MassUnitId.TroyOunce, "unit.troy-ounce", "symbol.troy-ounce", UnitType.Weight, 1 / 0.0311035),
+        new Unit(MassUnitId.TroyPound, "unit.troy-pound", "symbol.troy-pound", UnitType.Weight, 1 / 0.373242),
+        new Unit(MassUnitId.Pennyweight, "unit.pennyweight", "symbol.pennyweight", UnitType.Weight, 1 / 0.00155517),
       ],
     },
     {
       label: "group.apothecaries",
       code: "apothecaries",
       items: [
-        new Unit(MassUnitId.Grain, "unit.grain", "symbol.grain", UnitType.Weight, 0.0000647989),
-        new Unit(MassUnitId.Scruple, "unit.scruple", "symbol.scruple", UnitType.Weight, 0.00129598),
-        new Unit(MassUnitId.Dram, "unit.dram", "symbol.dram", UnitType.Weight, 0.00388794),
-        new Unit(MassUnitId.Ounce, "unit.ounce", "symbol.ounce", UnitType.Weight, 0.0283495),
-        new Unit(MassUnitId.Pound, "unit.pound", "symbol.pound", UnitType.Weight, 0.453592),
+        new Unit(MassUnitId.Grain, "unit.grain", "symbol.grain", UnitType.Weight, 1 / 0.0000647989),
+        new Unit(MassUnitId.Scruple, "unit.scruple", "symbol.scruple", UnitType.Weight, 1 / 0.00129598),
+        new Unit(MassUnitId.Dram, "unit.dram", "symbol.dram", UnitType.Weight, 1 / 0.00388794),
+        new Unit(MassUnitId.Ounce, "unit.ounce", "symbol.ounce", UnitType.Weight, 1 / 0.0283495),
+        new Unit(MassUnitId.Pound, "unit.pound", "symbol.pound", UnitType.Weight, 1 / 0.453592),
       ],
     },
     {
       label: "group.asian",
       code: "asian",
       items: [
-        new Unit(MassUnitId.Liang, "unit.liang", "symbol.liang", UnitType.Weight, 0.05),
-        new Unit(MassUnitId.Jin, "unit.jin", "symbol.jin", UnitType.Weight, 0.5),
-        new Unit(MassUnitId.Dan, "unit.dan", "symbol.dan", UnitType.Weight, 50),
-        new Unit(MassUnitId.Momme, "unit.momme", "symbol.momme", UnitType.Weight, 0.00375),
-        new Unit(MassUnitId.Chang, "unit.chang", "symbol.chang", UnitType.Weight, 0.6),
-        new Unit(MassUnitId.Catties, "unit.catties", "symbol.catties", UnitType.Weight, 0.60478982),
-        new Unit(MassUnitId.Tael, "unit.tael", "symbol.tael", UnitType.Weight, 0.0378),
-        new Unit(MassUnitId.Picul, "unit.picul", "symbol.picul", UnitType.Weight, 60.478982),
-        new Unit(MassUnitId.Baht, "unit.baht", "symbol.baht", UnitType.Weight, 0.015244),
+        new Unit(MassUnitId.Liang, "unit.liang", "symbol.liang", UnitType.Weight, 1 / 0.05),
+        new Unit(MassUnitId.Jin, "unit.jin", "symbol.jin", UnitType.Weight, 1 / 0.5),
+        new Unit(MassUnitId.Dan, "unit.dan", "symbol.dan", UnitType.Weight, 1 / 50),
+        new Unit(MassUnitId.Momme, "unit.momme", "symbol.momme", UnitType.Weight, 1 / 0.00375),
+        new Unit(MassUnitId.Chang, "unit.chang", "symbol.chang", UnitType.Weight, 1 / 0.6),
+        new Unit(MassUnitId.Catties, "unit.catties", "symbol.catties", UnitType.Weight, 1 / 0.60478982),
+        new Unit(MassUnitId.Tael, "unit.tael", "symbol.tael", UnitType.Weight, 1 / 0.0378),
+        new Unit(MassUnitId.Picul, "unit.picul", "symbol.picul", UnitType.Weight, 1 / 60.478982),
+        new Unit(MassUnitId.Baht, "unit.baht", "symbol.baht", UnitType.Weight, 1 / 0.015244),
       ],
     },
     {
       label: "group.ancient",
       code: "ancient",
       items: [
-        new Unit(MassUnitId.Shekel, "unit.shekel", "symbol.shekel", UnitType.Weight, 0.01134),
-        new Unit(MassUnitId.Mina, "unit.mina", "symbol.mina", UnitType.Weight, 0.505),
-        new Unit(MassUnitId.Talent, "unit.talent", "symbol.talent", UnitType.Weight, 30.3),
-        new Unit(MassUnitId.Carat, "unit.carat", "symbol.carat", UnitType.Weight, 0.0002),
-        new Unit(MassUnitId.Obolus, "unit.obolus", "symbol.obolus", UnitType.Weight, 0.00057),
-        new Unit(MassUnitId.Drachma, "unit.obolus", "symbol.obolus", UnitType.Weight, 0.0043),
+        new Unit(MassUnitId.Shekel, "unit.shekel", "symbol.shekel", UnitType.Weight, 1 / 0.01134),
+        new Unit(MassUnitId.Mina, "unit.mina", "symbol.mina", UnitType.Weight, 1 / 0.505),
+        new Unit(MassUnitId.Talent, "unit.talent", "symbol.talent", UnitType.Weight, 1 / 30.3),
+        new Unit(MassUnitId.Carat, "unit.carat", "symbol.carat", UnitType.Weight, 1 / 0.0002),
+        new Unit(MassUnitId.Obolus, "unit.obolus", "symbol.obolus", UnitType.Weight, 1 / 0.00057),
+        new Unit(MassUnitId.Drachma, "unit.obolus", "symbol.obolus", UnitType.Weight, 1 / 0.0043),
       ],
     },
   ];
