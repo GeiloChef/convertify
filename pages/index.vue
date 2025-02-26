@@ -25,7 +25,9 @@
 
 <script setup lang="ts">
 import { createUnitDataModel } from "@/utils/UnitData.Utils.js";
-import {UnitGroup} from "@/models/Unit.Models";
+import {
+  UnitGroup,
+} from "@/models/Unit.Models";
 
 const unitDataModel = ref(createUnitDataModel());
 
