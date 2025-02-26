@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col justify-center items-center gap-4">
     <h1 class="test">
-      {{ $t('convert-different-units-of-type') }}
+      {{ $t('convert-different-units-of-type', {type: unitType}) }}
     </h1>
     <h2>
       {{ $t('select-two-units-to-start') }}
