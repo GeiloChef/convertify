@@ -4,7 +4,15 @@
 * */
 
 import { Unit } from "../models/Unit.Class";
-import {UnitDataModel, LengthUnitId, UnitType, MassUnitId, UnitTypeObject, UnitGroup} from "../models/Unit.Models";
+import {
+  UnitDataModel,
+  LengthUnitId,
+  UnitType,
+  MassUnitId,
+  UnitTypeObject,
+  UnitGroup,
+  VelocityUnitId, DataVelocityUnitId, DataSizeUnitId
+} from "../models/Unit.Models";
 
 export const getLengthUnits = (): UnitTypeObject => {
     const groups: UnitGroup[] = [
@@ -185,10 +193,190 @@ export const getWeightUnits = (): UnitTypeObject => {
   };
 }
 
+export const getVelocityUnits = (): UnitTypeObject => {
+  const groups: UnitGroup[] = [
+    {
+      label: "group.metric",
+      code: "metric",
+      items: [
+        new Unit(VelocityUnitId.MetersPerSecond, "unit.meters-per-second", "symbol.meters-per-second", UnitType.Velocity, 1),
+        new Unit(VelocityUnitId.KilometersPerHour, "unit.kilometers-per-hour", "symbol.kilometers-per-hour", UnitType.Velocity, 1 / 3.6),
+        new Unit(VelocityUnitId.CentimetersPerSecond, "unit.centimeters-per-second", "symbol.centimeters-per-second", UnitType.Velocity, 1 / 100),
+        new Unit(VelocityUnitId.MillimetersPerSecond, "unit.millimeters-per-second", "symbol.millimeters-per-second", UnitType.Velocity, 1 / 1000),
+        new Unit(VelocityUnitId.KilometersPerSecond, "unit.kilometers-per-second", "symbol.kilometers-per-second", UnitType.Velocity, 1 / 1000),
+      ],
+    },
+    {
+      label: "group.imperial",
+      code: "imperial",
+      items: [
+        new Unit(VelocityUnitId.FeetPerSecond, "unit.feet-per-second", "symbol.feet-per-second", UnitType.Velocity, 1 / 0.3048),
+        new Unit(VelocityUnitId.MilesPerHour, "unit.miles-per-hour", "symbol.miles-per-hour", UnitType.Velocity, 1 / 2.23694),
+        new Unit(VelocityUnitId.InchesPerSecond, "unit.inches-per-second", "symbol.inches-per-second", UnitType.Velocity, 1 / 39.3701),
+        new Unit(VelocityUnitId.Knots, "unit.knots", "symbol.knots", UnitType.Velocity, 1 / 1.94384),
+        new Unit(VelocityUnitId.FurlongsPerFortnight, "unit.furlongs-per-fortnight", "symbol.furlongs-per-fortnight", UnitType.Velocity, 1 / 0.000166309),
+      ],
+    },
+    {
+      label: "group.scientific",
+      code: "scientific",
+      items: [
+        new Unit(VelocityUnitId.SpeedOfLight, "unit.speed-of-light", "symbol.speed-of-light", UnitType.Velocity, 1 / 299792458),
+        new Unit(VelocityUnitId.Mach, "unit.mach", "symbol.mach", UnitType.Velocity, 1 / 343),
+        new Unit(VelocityUnitId.AstronomicalUnitsPerDay, "unit.astronomical-units-per-day", "symbol.astronomical-units-per-day", UnitType.Velocity, 1 / 1731456),
+      ],
+    },
+    {
+      label: "group.miscellaneous",
+      code: "miscellaneous",
+      items: [
+        new Unit(VelocityUnitId.YardsPerSecond, "unit.yards-per-second", "symbol.yards-per-second", UnitType.Velocity, 1 / 1.09361),
+        new Unit(VelocityUnitId.LunarVelocity, "unit.lunar-velocity", "symbol.lunar-velocity", UnitType.Velocity, 1 / 1022),
+      ],
+    },
+    {
+      label: "group.astronomical",
+      code: "astronomical",
+      items: [
+        new Unit(VelocityUnitId.LightYearsPerDay, "unit.light-years-per-day", "symbol.light-years-per-day", UnitType.Velocity, 1 / 9.461e+12),
+        new Unit(VelocityUnitId.AstronomicalUnitsPerHour, "unit.astronomical-units-per-hour", "symbol.astronomical-units-per-hour", UnitType.Velocity, 1 / 1731456 / 24),
+      ],
+    },
+    {
+      label: "group.timeBased",
+      code: "time-based",
+      items: [
+        new Unit(VelocityUnitId.MetersPerMinute, "unit.meters-per-minute", "symbol.meters-per-minute", UnitType.Velocity, 1 / 60),
+        new Unit(VelocityUnitId.KilometersPerDay, "unit.kilometers-per-day", "symbol.kilometers-per-day", UnitType.Velocity, 1 / 86400),
+        new Unit(VelocityUnitId.MilesPerSecond, "unit.miles-per-second", "symbol.miles-per-second", UnitType.Velocity, 1 / 0.44704),
+      ],
+    },
+    {
+      label: "group.engineering",
+      code: "engineering",
+      items: [
+        new Unit(VelocityUnitId.RevolutionsPerMinute, "unit.revolutions-per-minute", "symbol.revolutions-per-minute", UnitType.Velocity, 1 / 60),
+        new Unit(VelocityUnitId.FeetPerMinute, "unit.feet-per-minute", "symbol.feet-per-minute", UnitType.Velocity, 1 / 18.288),
+      ],
+    },
+    {
+      label: "group.navigation",
+      code: "navigation",
+      items: [
+        new Unit(VelocityUnitId.NauticalMilesPerHour, "unit.nautical-miles-per-hour", "symbol.nautical-miles-per-hour", UnitType.Velocity, 1 / 1.852),
+        new Unit(VelocityUnitId.KilometersPerMinute, "unit.kilometers-per-minute", "symbol.kilometers-per-minute", UnitType.Velocity, 1 / 60),
+      ],
+    },
+    {
+      label: "group.biomechanical",
+      code: "biomechanical",
+      items: [
+        new Unit(VelocityUnitId.StepsPerSecond, "unit.steps-per-second", "symbol.steps-per-second", UnitType.Velocity, 1 / 1.4),
+        new Unit(VelocityUnitId.KilometersPerHourWalking, "unit.kilometers-per-hour-walking", "symbol.kilometers-per-hour-walking", UnitType.Velocity, 1 / 5),
+      ],
+    },
+    {
+      label: "group.virtual",
+      code: "virtual",
+      items: [
+        new Unit(VelocityUnitId.PixelsPerSecond, "unit.pixels-per-second", "symbol.pixels-per-second", UnitType.Velocity, 1),
+        new Unit(VelocityUnitId.VirtualUnitsPerSecond, "unit.virtual-units-per-second", "symbol.virtual-units-per-second", UnitType.Velocity, 1),
+      ],
+    },
+    {
+      label: "group.weather",
+      code: "weather",
+      items: [
+        new Unit(VelocityUnitId.WindSpeedMetersPerSecond, "unit.wind-speed-meters-per-second", "symbol.wind-speed-meters-per-second", UnitType.Velocity, 1),
+        new Unit(VelocityUnitId.WindSpeedKilometersPerHour, "unit.wind-speed-kilometers-per-hour", "symbol.wind-speed-kilometers-per-hour", UnitType.Velocity, 1 / 3.6),
+      ],
+    }
+  ];
+
+  groups.forEach(group => {
+    group.items.sort((a, b) => a.conversionFactor - b.conversionFactor);
+  });
+
+  return {
+    id: UnitType.Velocity,
+    label: 'type.velocity',
+    unitGroups: groups
+  };
+};
+
+export const getDataVelocityUnits = (): UnitTypeObject => {
+  const groups: UnitGroup[] = [
+    {
+      label: "group.bits",
+      code: "dataBitsVelocity",
+      items: [
+        new Unit(DataVelocityUnitId.BitsPerSecond, "unit.bits-per-second", "symbol.bits-per-second", UnitType.DataVelocity, 1),
+        new Unit(DataVelocityUnitId.KilobitsPerSecond, "unit.kilobits-per-second", "symbol.kilobits-per-second", UnitType.DataVelocity, 1 / 1_000),
+        new Unit(DataVelocityUnitId.MegabitsPerSecond, "unit.megabits-per-second", "symbol.megabits-per-second", UnitType.DataVelocity, 1 / 1_000_000),
+        new Unit(DataVelocityUnitId.GigabitsPerSecond, "unit.gigabits-per-second", "symbol.gigabits-per-second", UnitType.DataVelocity, 1 / 1_000_000_000),
+        new Unit(DataVelocityUnitId.TerabitsPerSecond, "unit.terabits-per-second", "symbol.terabits-per-second", UnitType.DataVelocity, 1 / 1_000_000_000_000),
+      ],
+    },
+    {
+      label: "group.bytes",
+      code: "dataBytesVelocity",
+      items: [
+        new Unit(DataVelocityUnitId.BytesPerSecond, "unit.bytes-per-second", "symbol.bytes-per-second", UnitType.DataVelocity, 1 / 8),
+        new Unit(DataVelocityUnitId.KilobytesPerSecond, "unit.kilobytes-per-second", "symbol.kilobytes-per-second", UnitType.DataVelocity, 1 / 8_000),
+        new Unit(DataVelocityUnitId.MegabytesPerSecond, "unit.megabytes-per-second", "symbol.megabytes-per-second", UnitType.DataVelocity, 1 / 8_000_000),
+        new Unit(DataVelocityUnitId.GigabytesPerSecond, "unit.gigabytes-per-second", "symbol.gigabytes-per-second", UnitType.DataVelocity, 1 / 8_000_000_000),
+        new Unit(DataVelocityUnitId.TerabytesPerSecond, "unit.terabytes-per-second", "symbol.terabytes-per-second", UnitType.DataVelocity, 1 / 8_000_000_000_000)
+      ],
+    },
+  ]
+
+  return {
+    id: UnitType.DataVelocity,
+    label: 'type.data-velocity',
+    unitGroups: groups
+  };
+};
+
+export const getDataSizeUnits = (): UnitTypeObject => {
+  const groups: UnitGroup[] = [
+    {
+      label: "group.bits",
+      code: "dataBitsSize",
+      items: [
+        new Unit(DataSizeUnitId.Bit, "unit.bit", "symbol.bit", UnitType.DataSize, 1),
+        new Unit(DataSizeUnitId.Kilobit, "unit.kilobit", "symbol.kilobit", UnitType.DataSize, 1 / 1_000),
+        new Unit(DataSizeUnitId.Megabit, "unit.megabit", "symbol.megabit", UnitType.DataSize, 1 / 1_000_000),
+        new Unit(DataSizeUnitId.Gigabit, "unit.gigabit", "symbol.gigabit", UnitType.DataSize, 1 / 1_000_000_000),
+        new Unit(DataSizeUnitId.Terabit, "unit.terabit", "symbol.terabit", UnitType.DataSize, 1 / 1_000_000_000_000),
+      ],
+    },
+    {
+      label: "group.bytes",
+      code: "dataBytesSize",
+      items: [
+        new Unit(DataSizeUnitId.Byte, "unit.byte", "symbol.byte", UnitType.DataSize, 1 / 8),
+        new Unit(DataSizeUnitId.Kilobyte, "unit.kilobyte", "symbol.kilobyte", UnitType.DataSize, 1 / 8_000),
+        new Unit(DataSizeUnitId.Megabyte, "unit.megabyte", "symbol.megabyte", UnitType.DataSize, 1 / 8_000_000),
+        new Unit(DataSizeUnitId.Gigabyte, "unit.gigabyte", "symbol.gigabyte", UnitType.DataSize, 1 / 8_000_000_000),
+        new Unit(DataSizeUnitId.Terabyte, "unit.terabyte", "symbol.terabyte", UnitType.DataSize, 1 / 8_000_000_000_000)
+      ],
+    },
+  ]
+
+  return {
+    id: UnitType.DataSize,
+    label: 'type.data-size',
+    unitGroups: groups
+  };
+};
+
 
 export const createUnitDataModel = (): UnitDataModel => {
   return {
     [UnitType.Length]: getLengthUnits(),
     [UnitType.Weight]: getWeightUnits(),
+    [UnitType.Velocity]: getVelocityUnits(),
+    [UnitType.DataVelocity]: getDataVelocityUnits(),
+    [UnitType.DataSize]: getDataSizeUnits(),
   };
 }

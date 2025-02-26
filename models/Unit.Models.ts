@@ -1,6 +1,6 @@
 import {Unit} from "./Unit.Class";
 
-export type UnitId = LengthUnitId & MassUnitId
+export type UnitId = LengthUnitId & MassUnitId & VelocityUnitId & DataVelocityUnitId & DataSizeUnitId;
 
 export enum LengthUnitId {
   Meter = "meter",
@@ -87,10 +87,71 @@ export enum MassUnitId {
   Dram = "dram",
 }
 
+export enum VelocityUnitId {
+  MetersPerSecond = "MetersPerSecond",
+  KilometersPerHour = "KilometersPerHour",
+  CentimetersPerSecond = "CentimetersPerSecond",
+  MillimetersPerSecond = "MillimetersPerSecond",
+  KilometersPerSecond = "KilometersPerSecond",
+  FeetPerSecond = "FeetPerSecond",
+  MilesPerHour = "MilesPerHour",
+  InchesPerSecond = "InchesPerSecond",
+  Knots = "Knots",
+  FurlongsPerFortnight = "FurlongsPerFortnight",
+  SpeedOfLight = "SpeedOfLight",
+  Mach = "Mach",
+  AstronomicalUnitsPerDay = "AstronomicalUnitsPerDay",
+  YardsPerSecond = "YardsPerSecond",
+  LunarVelocity = "LunarVelocity",
+  LightYearsPerDay = "LightYearsPerDay",
+  AstronomicalUnitsPerHour = "AstronomicalUnitsPerHour",
+  MetersPerMinute = "MetersPerMinute",
+  KilometersPerDay = "KilometersPerDay",
+  MilesPerSecond = "MilesPerSecond",
+  RevolutionsPerMinute = "RevolutionsPerMinute",
+  FeetPerMinute = "FeetPerMinute",
+  NauticalMilesPerHour = "NauticalMilesPerHour",
+  KilometersPerMinute = "KilometersPerMinute",
+  StepsPerSecond = "StepsPerSecond",
+  KilometersPerHourWalking = "KilometersPerHourWalking",
+  PixelsPerSecond = "PixelsPerSecond",
+  VirtualUnitsPerSecond = "VirtualUnitsPerSecond",
+  WindSpeedMetersPerSecond = "WindSpeedMetersPerSecond",
+  WindSpeedKilometersPerHour = "WindSpeedKilometersPerHour"
+}
+
+export enum DataVelocityUnitId {
+  BitsPerSecond = "bitsPerSecond",
+  KilobitsPerSecond = "kilobitsPerSecond",
+  MegabitsPerSecond = "megabitsPerSecond",
+  GigabitsPerSecond = "gigabitsPerSecond",
+  TerabitsPerSecond = "terabitsPerSecond",
+  BytesPerSecond = "bytesPerSecond",
+  KilobytesPerSecond = "kilobytesPerSecond",
+  MegabytesPerSecond = "megabytesPerSecond",
+  GigabytesPerSecond = "gigabytesPerSecond",
+  TerabytesPerSecond = "terabytesPerSecond"
+}
+
+export enum DataSizeUnitId {
+  Bit = "Bit",
+  Kilobit = "Kilobit",
+  Megabit = "Megabit",
+  Gigabit = "Gigabit",
+  Terabit = "Terabit",
+  Byte = "Byte",
+  Kilobyte = "Kilobyte",
+  Megabyte = "Megabyte",
+  Gigabyte = "Gigabyte",
+  Terabyte = "Terabyte",
+}
 
 export enum UnitType {
   Length = "length",
   Weight = "weight",
+  Velocity = "velocity",
+  DataVelocity = "data-velocity",
+  DataSize = "data-size",
 }
 
 export interface UnitGroup {
