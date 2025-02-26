@@ -94,14 +94,14 @@ export enum UnitType {
 }
 
 export interface UnitGroup {
-  id: string,
+  code: string,
   label: string,
   items: Unit[]
 }
 
 export interface UnitTypeObject {
+  id: string,
   label: string,
-  code: string,
   unitGroups: UnitGroup[]
 }
 
