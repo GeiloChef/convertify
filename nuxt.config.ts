@@ -1,9 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import Aura from '@primevue/themes/aura';
-import {createUnitDataModel} from "./utils/UnitData.Utils";
 import {fileURLToPath} from "mlly";
-
-const locales = ["en"];
+import {getRoutesForPreRendering} from "./utils/PreRenderer.Utils";
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
@@ -24,34 +22,7 @@ export default defineNuxtConfig({
     },
     prerender: {
       routes: (() => {
-        const unitDataModel = createUnitDataModel(); // Should return { length: UnitGroup[], weight: UnitGroup[], ... }
-
-        if (!unitDataModel || typeof unitDataModel !== "object") {
-          console.warn("Invalid unitDataModel structure");
-          return [];
-        }
-        return locales.flatMap(locale => {
-          return Object.entries(unitDataModel).flatMap(([type, unitTypeObject]) => {
-            if (!Array.isArray(unitTypeObject.unitGroups)) {
-              console.warn(`Skipping invalid unit type: ${type}`);
-              return [];
-            }
-
-            return unitTypeObject.unitGroups.flatMap(group => {
-              if (!Array.isArray(group.items)) {
-                console.warn(`Skipping invalid unit group: ${group.label}`);
-                return [];
-              }
-
-              return group.items.flatMap(from =>
-                group.items
-                  
-                  .filter(to => from.id !== to.id)
-                  .map(to => `/${locale}/convert/${type}/${from.id}-to-${to.id}`)
-              );
-            });
-          });
-        });
+        return getRoutesForPreRendering()
       })(),
     }
   },
