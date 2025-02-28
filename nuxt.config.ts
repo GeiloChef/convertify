@@ -56,7 +56,7 @@ export default defineNuxtConfig({
   },
   fontawesome: {
     icons: {
-      solid: ['cog', 'trash', 'right-left', 'circle-check' ],
+      solid: ['cog', 'trash', 'right-left', 'circle-check', 'magnifying-glass' ],
     },
     component: 'Icon',
   },

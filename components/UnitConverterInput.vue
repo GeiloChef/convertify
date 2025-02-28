@@ -19,6 +19,7 @@
         <Select
           :modelValue="selectedUnit"
           :options="selectableUnitOptions"
+          filter
           class="border-0"
           optionLabel="name"
           optionGroupLabel="label"
