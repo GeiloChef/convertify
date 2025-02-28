@@ -55,27 +55,27 @@ export const getLengthUnits = (): UnitTypeObject => {
         label: "group.nautical",
         code: "nautical",
         items: [
-          new Unit(LengthUnitId.NauticalMile, "unit.nauticalmile", "symbol.nauticalmile", UnitType.Length, 0.000539957),
+          new Unit(LengthUnitId.NauticalMile, "unit.nautical-mile", "symbol.nautical-mile", UnitType.Length, 0.000539957),
         ],
       },
       {
         label: "group.astronomical",
         code: "astronomical",
         items: [
-          new Unit(LengthUnitId.LightYear, "unit.lightyear", "symbol.lightyear", UnitType.Length, 1.057e-16),
+          new Unit(LengthUnitId.LightYear, "unit.light-year", "symbol.light-year", UnitType.Length, 1.057e-16),
           new Unit(LengthUnitId.Parsec, "unit.parsec", "symbol.parsec", UnitType.Length, 3.26156e-17),
-          new Unit(LengthUnitId.AstronomicalUnit, "unit.astronomicalunit", "symbol.astronomicalunit", UnitType.Length, 6.68459e-12),
+          new Unit(LengthUnitId.AstronomicalUnit, "unit.astronomical-unit", "symbol.astronomical-unit", UnitType.Length, 6.68459e-12),
           new Unit(LengthUnitId.Kiloparsec, "unit.kiloparsec", "symbol.kiloparsec", UnitType.Length, 3.26156e-14),
           new Unit(LengthUnitId.MegaParsec, "unit.megaparsec", "symbol.megaparsec", UnitType.Length, 3.26156e-20),
-          new Unit(LengthUnitId.SolarRadius, "unit.solarradius", "symbol.solarradius", UnitType.Length, 1.43785e-9),
-          new Unit(LengthUnitId.LunarDistance, "unit.lunardistance", "symbol.lunardistance", UnitType.Length, 2.60416e-9),
+          new Unit(LengthUnitId.SolarRadius, "unit.solar-radius", "symbol.solar-radius", UnitType.Length, 1.43785e-9),
+          new Unit(LengthUnitId.LunarDistance, "unit.lunar-distance", "symbol.lunar-distance", UnitType.Length, 2.60416e-9),
         ],
       },
       {
         label: "group.quantum",
         code: "quantum",
         items: [
-          new Unit(LengthUnitId.PlanckLength, "unit.plancklength", "symbol.plancklength", UnitType.Length, 6.187e+34),
+          new Unit(LengthUnitId.PlanckLength, "unit.planck-length", "symbol.planck-length", UnitType.Length, 6.187e+34),
         ],
       },
     ];
@@ -104,16 +104,16 @@ export const getWeightUnits = (): UnitTypeObject => {
         new Unit(MassUnitId.Quintal, "unit.quintal", "symbol.quintal", UnitType.Weight, 1 / 100), // 100 kg (used in agriculture)
         new Unit(MassUnitId.Kilo, "unit.kilo", "symbol.kilo", UnitType.Weight,  1), // 1 kg
         new Unit(MassUnitId.Hectogram, "unit.hectogram", "symbol.hectogram", UnitType.Weight, 1 / 0.1), // 100 g
-        new Unit(MassUnitId.Decagram, "unit.decagram", "symbol.decagram", UnitType.Weight, 1 / 0.01), // 10 g
+        new Unit(MassUnitId.Decagram, "unit.deca-gram", "symbol.deca-gram", UnitType.Weight, 1 / 0.01), // 10 g
         new Unit(MassUnitId.Gram, "unit.gram", "symbol.gram", UnitType.Weight, 1 / 0.001), // 1 g
-        new Unit(MassUnitId.Decigram, "unit.decigram", "symbol.decigram", UnitType.Weight, 1 / 0.0001), // 0.1 g
+        new Unit(MassUnitId.Decigram, "unit.deci-gram", "symbol.deci-gram", UnitType.Weight, 1 / 0.0001), // 0.1 g
         new Unit(MassUnitId.Centigram, "unit.centigram", "symbol.centigram", UnitType.Weight, 1 / 0.00001), // 0.01 g
         new Unit(MassUnitId.Milligram, "unit.milligram", "symbol.milligram", UnitType.Weight, 1 / 0.000001), // 0.001 g
-        new Unit(MassUnitId.Microgram, "unit.microgram", "symbol.microgram", UnitType.Weight, 1 / 0.000000001), // 1 µg
-        new Unit(MassUnitId.Nanogram, "unit.nanogram", "symbol.nanogram", UnitType.Weight, 1 / 0.000000000001), // 1 ng
-        new Unit(MassUnitId.Picogram, "unit.picogram", "symbol.picogram", UnitType.Weight, 1 / 0.000000000000001), // 1 pg
-        new Unit(MassUnitId.Femtogram, "unit.femtogram", "symbol.femtogram", UnitType.Weight, 1 / 0.000000000000000001), // 1 fg
-        new Unit(MassUnitId.Attogram, "unit.attogram", "symbol.attogram", UnitType.Weight, 1 / 0.000000000000000000001), // 1 ag
+        new Unit(MassUnitId.Microgram, "unit.micro-gram", "symbol.micro-gram", UnitType.Weight, 1 / 0.000000001), // 1 µg
+        new Unit(MassUnitId.Nanogram, "unit.nano-gram", "symbol.nano-gram", UnitType.Weight, 1 / 0.000000000001), // 1 ng
+        new Unit(MassUnitId.Picogram, "unit.pico-gram", "symbol.pico-gram", UnitType.Weight, 1 / 0.000000000000001), // 1 pg
+        new Unit(MassUnitId.Femtogram, "unit.femto-gram", "symbol.femto-gram", UnitType.Weight, 1 / 0.000000000000000001), // 1 fg
+        new Unit(MassUnitId.Attogram, "unit.atto-gram", "symbol.atto-gram", UnitType.Weight, 1 / 0.000000000000000000001), // 1 ag
       ],
     },
     {
@@ -344,7 +344,7 @@ export const getDataSizeUnits = (): UnitTypeObject => {
       code: "dataBitsSize",
       items: [
         new Unit(DataSizeUnitId.Bit, "unit.bit", "symbol.bit", UnitType.DataSize, 1),
-        new Unit(DataSizeUnitId.Kilobit, "unit.kilobit", "symbol.kilobit", UnitType.DataSize, 1 / 1_000),
+        new Unit(DataSizeUnitId.Kilobit, "unit.kilo-bit", "symbol.kilo-bit", UnitType.DataSize, 1 / 1_000),
         new Unit(DataSizeUnitId.Megabit, "unit.megabit", "symbol.megabit", UnitType.DataSize, 1 / 1_000_000),
         new Unit(DataSizeUnitId.Gigabit, "unit.gigabit", "symbol.gigabit", UnitType.DataSize, 1 / 1_000_000_000),
         new Unit(DataSizeUnitId.Terabit, "unit.terabit", "symbol.terabit", UnitType.DataSize, 1 / 1_000_000_000_000),
