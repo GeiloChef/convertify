@@ -1,0 +1,38 @@
+{
+  "best-way-to-convert": "The best way to convert {from} to {to}!",
+  "convert-different-units-of-type": "Convert differnt units of { type }",
+  "convertify": "Convertify",
+  "group": {
+    "ancient": "Ancient",
+    "apothecaries": "Apothecaries",
+    "asian": "Asian",
+    "astronomical": "Astronomical",
+    "biomechanical": "Biomechanical",
+    "bits": "Bits",
+    "bytes": "Bytes",
+    "engineering": "Engineering",
+    "imperial": "Imperial",
+    "metric": "Metric",
+    "miscellaneous": "Miscellaneous",
+    "nautical": "Nautical",
+    "navigation": "Navigation",
+    "quantum": "Quantum",
+    "scientific": "Scientific",
+    "time-based": "Time-Based",
+    "troy-weight": "Troy Weight",
+    "virtual": "Virtual/Simulation",
+    "weather": "Weather/Climatic",
+    "time-base": "Time Based"
+  },
+  "home": "Home",
+  "select-the-group-you-want-to-convert": "Select a group for unit conversion!",
+  "select-two-units-to-start": "Select two units to start converting!",
+  "type": {
+    "data-size": "Data Size",
+    "data-velocity": "Data Velocity",
+    "length": "Length",
+    "velocity": "Velocity",
+    "weight": "Weight"
+  },
+  "welcome": "Welcome to the best converter!"
+}

@@ -38,8 +38,13 @@ export default defineNuxtConfig({
     langDir: '',
     locale: 'en',
     locales: [
-      { "code": "en", "language": 'en-US', "file": "en.json", "dir": "ltr" }
-    ]
+      { "code": "en", "language": 'en-US', "files": ['en/common.json', 'en/symbol.json', 'en/unit.json'], "dir": "ltr" }
+    ],
+    lazy: false
+  },
+  vueI18n: {
+    legacy: false,
+    globalInjection: true
   },
   primevue: {
     options: {

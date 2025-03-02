@@ -243,7 +243,7 @@ export const getVelocityUnits = (): UnitTypeObject => {
       ],
     },
     {
-      label: "group.timeBased",
+      label: "group.time-based",
       code: "time-based",
       items: [
         new Unit(VelocityUnitId.MetersPerMinute, "unit.meters-per-minute", "symbol.meters-per-minute", UnitType.Velocity, 1 / 60),

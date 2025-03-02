@@ -6,6 +6,7 @@
     "strict": true,
     "jsx": "preserve",
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
     "types": ["node", "nuxt"],
     "baseUrl": ".",
