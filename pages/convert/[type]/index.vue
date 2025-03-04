@@ -1,14 +1,13 @@
 <template>
   <div class="flex flex-col justify-center items-center gap-4">
     <h1 class="test">
-      {{ $t('convert-different-units-of-type', {type: unitType}) }}
+      {{ $t('convert-different-units-of-type', {type: translatedUnitType}) }}
     </h1>
     <h2>
       {{ $t('select-two-units-to-start') }}
     </h2>
 
     <div>
-
       <InputGroup>
         <InputText
           v-model="unitSearchText"
@@ -25,6 +24,7 @@
       <template v-for="(group, index) in filteredUnitGroups"
                 :key="group.label">
         <div v-show="group.items.length">
+          <Divider />
           <h3>{{ $t(group.label) }}</h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 p-4">
             <UnitSelectionTile
@@ -47,6 +47,7 @@
   import {createUnitDataModel} from "@/utils/UnitData.Utils";
 
   const route = useRoute();
+  const {t} = useI18n();
 
   const unitDataModel = ref<UnitDataModel>(createUnitDataModel());
   const selectedUnits = ref<Unit[]>([]);
@@ -54,6 +55,10 @@
 
   const unitType = computed((): string => {
     return route.params.type
+  })
+
+  const translatedUnitType = computed((): string => {
+    return t(route.params.type)
   })
 
   const unitGroupsForCurrentUnitType = computed((): UnitGroup[] => {
