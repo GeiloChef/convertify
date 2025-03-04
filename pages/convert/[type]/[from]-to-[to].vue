@@ -10,31 +10,34 @@
     </div>
     <Card>
       <template #content>
-        <div class="flex flex-row gap-8 justify-center items-center">
-          <UnitConverterInput
-            v-model:input-value="valueFrom"
-            v-model:selected-unit="fromUnit"
-            input-id="fromValue"
-            :selectableUnitOptions="selectableFromUnitOptions"
-            @update:selectedUnit="onChangeSelectedFromUnit"
-            @update:inputValue="onInputFrom"/>
+        <div class="flex flex-col gap-4">
+          <div class="flex flex-row gap-8 justify-center items-center">
+            <UnitConverterInput
+              v-model:input-value="valueFrom"
+              v-model:selected-unit="fromUnit"
+              input-id="fromValue"
+              :selectableUnitOptions="selectableFromUnitOptions"
+              @update:selectedUnit="onChangeSelectedFromUnit"
+              @update:inputValue="onInputFrom"/>
 
-          <Button
-            class="mt-8"
-            severity="secondary"
-            @click="switchConversion">
-            <Icon
-              icon="right-left"
-              size="2xl" />
-          </Button>
+            <Button
+              class="mt-8"
+              severity="secondary"
+              @click="switchConversion">
+              <Icon
+                icon="right-left"
+                size="2xl" />
+            </Button>
 
-          <UnitConverterInput
-            v-model:input-value="valueTo"
-            v-model:selected-unit="toUnit"
-            input-id="toValue"
-            :selectableUnitOptions="selectableToUnitOptions"
-            @update:selectedUnit="onChangeSelectedToUnit"
-            @update:inputValue="onInputTo"/>
+            <UnitConverterInput
+              v-model:input-value="valueTo"
+              v-model:selected-unit="toUnit"
+              input-id="toValue"
+              :selectableUnitOptions="selectableToUnitOptions"
+              @update:selectedUnit="onChangeSelectedToUnit"
+              @update:inputValue="onInputTo"/>
+          </div>
+          <UnitDetailTabs :units="[fromUnit, toUnit]" />
         </div>
       </template>
     </Card>
@@ -53,7 +56,6 @@ import {ConverterNavigationValueType} from "@/models/Routing.Models";
 const route = useRoute();
 const router = useRouter();
 
-const unitStore = useUnitStore();
 
 const valueFrom = ref<number>(0);
 const valueTo = ref<number>(0);
