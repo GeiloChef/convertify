@@ -40,9 +40,12 @@ const props = defineProps({
 const unitData = ref<UnitDataDescriptionData[]>([]);
 const tabValue = ref(0);
 
+/**
+ * This method goes through the fetched unit details and checked which of the units has details to find which tab should be
+ * preselected by default
+ */
 const setTabValue = (): void => {
-
-  const firstEntryWithDescription = unitData.value.find((entry, index) => {
+  unitData.value.find((entry, index) => {
     if (entry.description.length) {
       tabValue.value = index;
     }
