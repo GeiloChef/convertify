@@ -1,19 +1,24 @@
 <template>
-  <Tabs :value="0">
+  <Tabs :value="tabValue">
     <TabList>
-      <Tab
-        v-for="(unit, index) in units"
-        :value="index">
-        {{ $t(`unit.${unit.id}`)}} ({{ $t(`symbol.${unit.id}`) }})
-      </Tab>
+      <template
+        v-for="(entry, index) in unitData"
+        :key="index">
+        <Tab
+          v-if="entry.description.length"
+          :value="index">
+          {{ $t(`unit.${entry.unit.id}`)}} ({{ $t(`symbol.${entry.unit.id}`) }})
+        </Tab>
+
+      </template>
     </TabList>
     <TabPanels>
       <TabPanel
-        v-for="(unitDescription, index) in unitData"
+        v-for="(entry, index) in unitData"
         :value="index">
         <MarkdownRenderer
-          :value="unitDescription"
-          :key="unitDescription"
+          :value="entry.description"
+          :key="entry.id"
           tag="article" />
       </TabPanel>
     </TabPanels>
@@ -23,6 +28,7 @@
 <script setup lang="ts">
 import {PropType} from "vue";
 import {Unit} from "@/models/Unit.Class";
+import {UnitDataDescriptionData} from "@/models/Unit.Models";
 
 const props = defineProps({
   units: {
@@ -31,47 +37,57 @@ const props = defineProps({
   },
 });
 
-const unitData = ref<string[]>();
+const unitData = ref<UnitDataDescriptionData[]>([]);
+const tabValue = ref(0);
 
-// Lazy load markdown on the client (CSR)
+const setTabValue = (): void => {
+
+  const firstEntryWithDescription = unitData.value.find((entry, index) => {
+    if (entry.description.length) {
+      tabValue.value = index;
+    }
+
+    return !!entry.description.length;
+  });
+}
+
 if (process.client) {
   const markdownFiles = import.meta.glob('@/i18n/en/unit-details/*.md', { eager: false, as: "raw" });
 
   const fetchMarkdown = async () => {
-    const unit1File = await markdownFiles[`/i18n/en/unit-details/${props.units[0].id}.md`]();
-    const unit2File = await markdownFiles[`/i18n/en/unit-details/${props.units[1].id}.md`]();
-    unitData.value = [unit1File, unit2File];
+    const unitDataArray: UnitDataDescriptionData[] = [];
+
+    for (const unit of props.units) {
+      const filePath = `/i18n/en/unit-details/${unit.id}.md`;
+
+      if (filePath in markdownFiles) {
+        const fileContent = await markdownFiles[filePath]();
+        unitDataArray.push({
+          unit: unit,
+          description: fileContent as string
+        });
+      } else {
+        unitDataArray.push({
+          unit: unit,
+          description: ''
+        });
+      }
+    }
+
+    unitData.value = unitDataArray;
   };
 
   fetchMarkdown();
 }
 
-/*
-const markdownContent = ref(preloadedContent.value);
-
-const { data: preloadedContent } = await useAsyncData(
-    "unit-markdown",
-    async () => {
-      // Read markdown from server-side at build time
-      const unitData1 = await import(`@/i18n/en/unit-details/${route.params.unit1}.md?raw`);
-      const unitData2 = await import(`/i18n/en/unit-details/${route.params.unit2}.md?raw`);
-      return {
-        unitData1: unitData1,
-        unitData2: unitData2,
-      };
+watch(
+    () => unitData.value,
+    (newValue: UnitDataDescriptionData[]) => {
+      if (newValue && Array.isArray(newValue) && newValue.length) {
+        setTabValue();
+      }
     }
-);*/
-
-/*useHead({
-  title: "Unit conversion",
-  meta: [
-    {
-      hid: "description",
-      name: "description",
-      content: markdownContent.value?.substring(0, 150) || "Loading...",
-    },
-  ],
-});*/
+);
 
 </script>
 

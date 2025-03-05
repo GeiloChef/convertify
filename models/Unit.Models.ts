@@ -169,3 +169,8 @@ export interface UnitTypeObject {
 export type UnitDataModel = {
   [key in UnitType]: UnitTypeObject;
 };
+
+export interface UnitDataDescriptionData {
+  unit: Unit;
+  description: string;
+}
