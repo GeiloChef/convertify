@@ -1,5 +1,8 @@
 {
+  "always-keep-from-value": "Always keep from value",
+  "always-keep-from-value-tooltip": "With this setting on, when switching a unit, always the input in the from field is kept.",
   "best-way-to-convert": "The best way to convert {from} to {to}!",
+  "conversion-settings": "Conversion Settings",
   "convert-different-units-of-type": "Convert differnt units of { type }",
   "convertify": "Convertify",
   "group": {
@@ -18,15 +21,16 @@
     "navigation": "Navigation",
     "quantum": "Quantum",
     "scientific": "Scientific",
+    "time-base": "Time Based",
     "time-based": "Time-Based",
     "troy-weight": "Troy Weight",
     "virtual": "Virtual/Simulation",
-    "weather": "Weather/Climatic",
-    "time-base": "Time Based"
+    "weather": "Weather/Climatic"
   },
   "home": "Home",
   "select-the-group-you-want-to-convert": "Select a group for unit conversion!",
   "select-two-units-to-start": "Select two units to start converting!",
+  "setting": "Setting | Settings",
   "type": {
     "data-size": "Data Size",
     "data-velocity": "Data Velocity",
