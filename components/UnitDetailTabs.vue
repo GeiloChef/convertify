@@ -55,13 +55,13 @@ const setTabValue = (): void => {
 }
 
 if (process.client) {
-  const markdownFiles = import.meta.glob('@/i18n/en/unit-details/*.md', { eager: false, as: "raw" });
+  const markdownFiles = import.meta.glob(`@/i18n/en/markdown/*/*.md`, { eager: false, as: 'raw' });
 
   const fetchMarkdown = async () => {
     const unitDataArray: UnitDataDescriptionData[] = [];
 
     for (const unit of props.units) {
-      const filePath = `/i18n/en/unit-details/${unit.id}.md`;
+      const filePath = `/i18n/en/markdown/${unit.type}/${unit.id}.md`;
 
       if (filePath in markdownFiles) {
         const fileContent = await markdownFiles[filePath]();
