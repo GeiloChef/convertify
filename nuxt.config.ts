@@ -26,7 +26,8 @@ export default defineNuxtConfig({
       })(),
     }
   },
-  modules: ['@nuxtjs/i18n', '@primevue/nuxt-module', '@nuxtjs/tailwindcss', '@vesp/nuxt-fontawesome', '@pinia/nuxt', '@nuxtjs/eslint-module', '@nuxtjs/mdc'],
+  modules: ['@nuxtjs/i18n', '@primevue/nuxt-module', '@nuxtjs/tailwindcss', '@vesp/nuxt-fontawesome', '@pinia/nuxt', '@nuxtjs/eslint-module', '@nuxtjs/mdc',
+    'pinia-plugin-persistedstate/nuxt',],
   i18n: {
     langDir: '',
     locale: 'en',
