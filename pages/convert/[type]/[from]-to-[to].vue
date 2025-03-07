@@ -56,6 +56,9 @@ import {ConverterNavigationValueType} from "@/models/Routing.Models";
 const route = useRoute();
 const router = useRouter();
 
+const SettingsStore = useSettingsStore();
+const { conversionSettings } = storeToRefs(SettingsStore);
+
 
 const valueFrom = ref<number>(0);
 const valueTo = ref<number>(0);
@@ -113,8 +116,8 @@ const onChangeSelectedToUnit = (newSelectedUnit: Unit): void => {
       fromUnit: route.params.from,
       toUnit: newSelectedUnit.id,
       unitType: fromUnit.value.type,
-      valueType: ConverterNavigationValueType.ToValue,
-      preSetValue: valueTo.value
+      valueType: conversionSettings.value.alwaysKeepFromValue ? ConverterNavigationValueType.FromValue : ConverterNavigationValueType.ToValue,
+      preSetValue: conversionSettings.value.alwaysKeepFromValue ? valueFrom.value : valueTo.value
     });
   }
 }
