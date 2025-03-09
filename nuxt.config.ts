@@ -31,6 +31,7 @@ export default defineNuxtConfig({
   i18n: {
     langDir: '',
     locale: 'en',
+    strategy: 'prefix',
     locales: [
       { "code": "en", "language": 'en-US', "files": ['en/common.json', 'en/symbol.json', 'en/unit.json'], "dir": "ltr" }
     ],
