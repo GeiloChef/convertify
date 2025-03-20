@@ -14,7 +14,7 @@ export default [
   {
     files: ["**/*.vue"],
     languageOptions: {
-      parser: vueParser, // ✅ Correct Vue parser
+      parser: tsParser, // ✅ Correct Vue parser
       parserOptions: {
         ecmaVersion: "latest",
         sourceType: "module",
