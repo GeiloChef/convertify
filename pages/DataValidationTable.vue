@@ -51,13 +51,10 @@
 </template>
 
 <script setup lang="ts">
-
-
-import {UnitTypeObject} from "@/models/Unit.Models";
+import {type UnitTypeObject} from "@/models/Unit.Models";
 import {Unit} from "@/models/Unit.Class";
-import {FilterMatchMode} from "@primevue/core";
 
-export interface UnitWithGroupLabel extends Unit {
+export interface UnitWithGroupLabel extends Omit<Unit, 'convert'> {
   groupLabel: string;
   hasDescription: boolean;
 }
@@ -80,15 +77,18 @@ const tableData = computed((): UnitWithGroupLabel[] => {
 
 const markdownFiles = ref<string[]>([]);
 
-if (process.client) {
-  const foundFiles = import.meta.glob(`@/i18n/en/markdown/!*!/!*.md`, { eager: false, as: 'raw' });
+onMounted(() => {
+  if (process.client) {
+    const foundFiles = import.meta.glob(`@/i18n/en/markdown/!*!/!*.md`, { eager: false, as: 'raw' });
 
-  const setFiles = (): void => {
-    markdownFiles.value = Object.keys(foundFiles).flatMap(filePath => filePath);
+    const setFiles = (): void => {
+      markdownFiles.value = Object.keys(foundFiles).flatMap(filePath => filePath);
+    }
+
+    setFiles();
+    console.log(markdownFiles.value)
   }
-
-  setFiles();
-}
+})
 
 const hasUnitDescription = (unit: Unit): boolean => {
   return markdownFiles.value.includes(`/i18n/en/markdown/${unit.type}/${unit.id}.md`);
