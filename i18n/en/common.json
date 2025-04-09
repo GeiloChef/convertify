@@ -30,7 +30,9 @@
   "home": "Home",
   "select-the-group-you-want-to-convert": "Select a group for unit conversion!",
   "select-two-units-to-start": "Select two units to start converting!",
+  "select-unit": "Select Unit",
   "setting": "Setting | Settings",
+  "start-now": "Start Now",
   "type": {
     "data-size": "Data Size",
     "data-velocity": "Data Velocity",

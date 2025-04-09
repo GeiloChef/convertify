@@ -1,26 +1,30 @@
 <template>
-  <div class="flex flex-col justify-center items-center gap-4">
-    <h1 class="test">
-      {{ $t('convert-different-units-of-type', {type: translatedUnitType}) }}
-    </h1>
-    <h2>
-      {{ $t('select-two-units-to-start') }}
-    </h2>
+  <div class="flex flex-col justify-between h-screen">
+    <div class="flex flex-col justify-center items-center gap-4">
+      <h1 class="test">
+        {{ $t('convert-different-units-of-type', {type: translatedUnitType}) }}
+      </h1>
+      <h2>
+        {{ $t('select-two-units-to-start') }}
+      </h2>
 
-    <div>
-      <InputGroup>
-        <InputText
-          v-model="unitSearchText"
-          size="large"
-          fluid />
-        <InputGroupAddon>
-          <Icon icon="magnifying-glass"/>
-        </InputGroupAddon>
-      </InputGroup>
+      <div>
+        <InputGroup>
+          <InputText
+            v-model="unitSearchText"
+            size="large"
+            fluid />
+          <InputGroupAddon>
+            <Icon icon="magnifying-glass"/>
+          </InputGroupAddon>
+        </InputGroup>
+      </div>
     </div>
 
 
-    <div v-if="filteredUnitGroups.length">
+    <div
+      v-if="filteredUnitGroups.length"
+      class="h-auto pb-16">
       <template v-for="(group, index) in filteredUnitGroups"
                 :key="group.label">
         <div v-show="group.items.length">
@@ -39,26 +43,34 @@
       </template>
     </div>
   </div>
+
+  <UnitSelectionBar
+    :from-unit="fromUnit"
+    :to-unit="toUnit"
+    @remove-from-unit="removeFromUnit"
+    @remove-to-unit="removeToUnit"/>
 </template>
 
 <script setup lang="ts">
   import UnitSelectionTile from "@/components/UnitSelectionTile.vue";
-  import {UnitDataModel, UnitGroup} from "@/models/Unit.Models";
+  import {type UnitDataModel, type UnitGroup, UnitType} from "@/models/Unit.Models";
   import {createUnitDataModel} from "@/utils/UnitData.Utils";
+  import UnitSelectionBar from "@/components/UnitSelectionBar.vue";
 
   const route = useRoute();
   const {t} = useI18n();
 
   const unitDataModel = ref<UnitDataModel>(createUnitDataModel());
-  const selectedUnits = ref<Unit[]>([]);
+  const fromUnit = ref<Unit | undefined>(undefined)
+  const toUnit = ref<Unit | undefined>(undefined)
   const unitSearchText = ref('');
 
-  const unitType = computed((): string => {
-    return route.params.type
+  const unitType = computed((): UnitType => {
+    return route.params.type as UnitType
   })
 
   const translatedUnitType = computed((): string => {
-    return t(route.params.type)
+    return t(route.params.type as string)
   })
 
   const unitGroupsForCurrentUnitType = computed((): UnitGroup[] => {
@@ -85,24 +97,32 @@
   });
 
   const toggleSelectUnit = (unit: Unit) => {
-    if (!selectedUnits.value.includes(unit.id)) {
-      selectedUnits.value.push(unit.id);
-    } else {
-      selectedUnits.value = selectedUnits.value.filter((existingUnit: string) => existingUnit !== unit.id);
+    if (isUnitSelected(unit)) {
+     if (fromUnit.value === unit) {
+       fromUnit.value = undefined;
+     } else if (toUnit.value === unit) {
+       toUnit.value = undefined;
+     }
+
+      return;
+    }
+
+    if (!fromUnit.value) {
+      fromUnit.value = unit;
+    } else if(!toUnit.value) {
+      toUnit.value = unit;
     }
   }
 
   const isUnitSelected = (unit: Unit) => {
-    return selectedUnits.value.includes(unit.id);
+    return fromUnit.value === unit || toUnit.value === unit;
   }
 
-  watchEffect(() => {
-    if (selectedUnits.value.length >= 2) {
-      navigateToConverterPage({
-        fromUnit: selectedUnits.value[0],
-        toUnit: selectedUnits.value[1],
-        unitType: unitType.value
-      })
-    }
-  })
+  const removeFromUnit = (): void => {
+    fromUnit.value = undefined;
+  }
+
+  const removeToUnit = (): void => {
+    toUnit.value = undefined;
+  }
 </script>
