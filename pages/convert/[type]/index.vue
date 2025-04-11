@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-between h-screen">
+  <div class="flex flex-col h-screen">
     <div class="flex flex-col justify-center items-center gap-4">
       <h1 class="test">
         {{ $t('convert-different-units-of-type', {type: translatedUnitType}) }}
