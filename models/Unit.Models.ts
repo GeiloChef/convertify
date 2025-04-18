@@ -1,6 +1,6 @@
 import {Unit} from "./Unit.Class";
 
-export type UnitId = LengthUnitId & MassUnitId & VelocityUnitId & DataVelocityUnitId & DataSizeUnitId;
+export type UnitId = LengthUnitId | MassUnitId | VelocityUnitId | DataVelocityUnitId | DataSizeUnitId;
 
 export enum LengthUnitId {
   Meter = "meter",

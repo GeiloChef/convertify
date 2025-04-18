@@ -5,12 +5,12 @@
 
 import { Unit } from "../models/Unit.Class";
 import {
-  UnitDataModel,
+  type UnitDataModel,
   LengthUnitId,
   UnitType,
   MassUnitId,
-  UnitTypeObject,
-  UnitGroup,
+  type UnitTypeObject,
+  type UnitGroup,
   VelocityUnitId, DataVelocityUnitId, DataSizeUnitId
 } from "../models/Unit.Models";
 

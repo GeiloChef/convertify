@@ -1,4 +1,4 @@
-import {UnitId, UnitType} from "./Units.Models";
+import {type UnitId, UnitType} from '@/models/Unit.Models';
 
 export class Unit {
   id: UnitId;
