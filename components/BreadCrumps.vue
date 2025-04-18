@@ -45,7 +45,7 @@ const items = computed((): CustomBreadCrumbItem[] => {
 
     breadCrumbItems.push({
       label: typeLabel,
-      route: `/convert/${route.params.type}`
+      route: `/en/convert/${route.params.type}`
     });
   }
 
