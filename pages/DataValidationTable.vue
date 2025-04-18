@@ -51,28 +51,32 @@
 </template>
 
 <script setup lang="ts">
-import {type UnitTypeObject} from "@/models/Unit.Models";
+import {type UnitDataModel, type UnitTypeObject} from "@/models/Unit.Models";
 import {Unit} from "@/models/Unit.Class";
+import {createUnitDataModel} from "@/utils/UnitData.Utils";
 
 export interface UnitWithGroupLabel extends Omit<Unit, 'convert'> {
   groupLabel: string;
   hasDescription: boolean;
 }
 
-const getAllUnitsWithGroup = (unitTypeObject: UnitTypeObject): UnitWithGroupLabel[] => {
-  return unitTypeObject.unitGroups.flatMap(group =>
-      group.items.map(unit => ({
-        ...unit,
-        groupLabel: group.label,
-        hasDescription: hasUnitDescription(unit),
-      }))
+const dataModel: UnitDataModel = createUnitDataModel();
+
+
+const getAllUnitsWithGroup = (): UnitWithGroupLabel[] => {
+  return Object.values(dataModel).flatMap((unitTypeObject) =>
+      unitTypeObject.unitGroups.flatMap((group) =>
+          group.items.map((unit) => ({
+            ...unit,
+            groupLabel: group.label,
+            hasDescription: hasUnitDescription(unit),
+          }))
+      )
   );
-}
+};
 
 const tableData = computed((): UnitWithGroupLabel[] => {
-  const lengthUnits = getLengthUnits();
-
-  return getAllUnitsWithGroup(lengthUnits)
+  return getAllUnitsWithGroup();
 });
 
 const markdownFiles = ref<string[]>([]);
