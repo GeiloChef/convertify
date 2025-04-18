@@ -6,6 +6,10 @@ import {getRoutesForPreRendering} from "./utils/PreRenderer.Utils";
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
+  app: {
+    baseURL: import.meta.dev ? '/' : '/convertify/',
+    cdnURL: import.meta.dev ? '/' : '/convertify/',
+  },
   css: [
     '~/assets/tailwind.css',
     '~/assets/primevue/tailwind.css',
