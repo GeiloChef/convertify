@@ -34,4 +34,5 @@ jobs:
           clean-exclude: |
             "CNAME"
             ".gitattributes"
+            ".nojekyll"
           single-commit: true
