@@ -6,10 +6,6 @@ import {getRoutesForPreRendering} from "./utils/PreRenderer.Utils";
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  app: {
-    baseURL: import.meta.dev ? '/' : '/convertify/',
-    cdnURL: import.meta.dev ? '/' : '/convertify/',
-  },
   css: [
     '~/assets/tailwind.css',
     '~/assets/primevue/tailwind.css',
@@ -18,7 +14,7 @@ export default defineNuxtConfig({
   alias: {
     "@": fileURLToPath(new URL("./", import.meta.url)), // This makes `@/` point to the root directory
   },
-/*  nitro: {
+  nitro: {
     resolve: {
       alias: {
         "@": fileURLToPath(new URL("./", import.meta.url)), // Ensures alias works in Nitro
@@ -29,7 +25,7 @@ export default defineNuxtConfig({
         return getRoutesForPreRendering()
       })(),
     }
-  },*/
+  },
   modules: ['@nuxtjs/i18n', '@primevue/nuxt-module', '@nuxtjs/tailwindcss', '@vesp/nuxt-fontawesome', '@pinia/nuxt', '@nuxtjs/eslint-module', '@nuxtjs/mdc',
     'pinia-plugin-persistedstate/nuxt',],
   i18n: {
