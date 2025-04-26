@@ -1,14 +1,16 @@
 <template>
-  <div class="fixed h-16 bottom-0 w-screen -ml-32 bg-primary bg-green-500 flex justify-around items-center px-32 select-none">
+  <div class="fixed h-16 bottom-0 w-screen -ml-2 sm:-ml-6 xl:-ml-32 bg-primary bg-green-500 flex justify-around items-center px-4 md:px-4 xl:px-32 select-none">
     <div class="flex flex-row justify-around items-center gap-8">
       <span class="small-text">Convert from</span>
 
       <div
           v-if="fromUnit"
           class="flex flex-row gap-2 justify-center items-center">
-        <span
-            class="unit-text">
+        <span class="unit-text hidden md:block">
           {{ $t(fromUnit.name) }}
+        </span>
+        <span class="unit-text block md:hidden">
+          {{ $t(fromUnit.symbol) }}
         </span>
         <Icon
             class="cursor-pointer hover:text-red-500"
@@ -25,9 +27,12 @@
       <div
           v-if="toUnit"
           class="flex flex-row gap-2 justify-center items-center">
-        <span
-            class="unit-text">
+        <span class="unit-text hidden md:block">
+
           {{ $t(toUnit.name) }}
+        </span>
+        <span class="unit-text block md:hidden">
+          {{ $t(toUnit.symbol) }}
         </span>
         <Icon
             class="cursor-pointer hover:text-red-500"

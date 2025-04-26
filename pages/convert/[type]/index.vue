@@ -1,10 +1,10 @@
 <template>
   <div class="flex flex-col h-screen">
     <div class="flex flex-col justify-center items-center gap-4">
-      <h1 class="test">
+      <h1 class="text-3xl md:text-4xl text-center">
         {{ $t('convert-different-units-of-type', {type: translatedUnitType}) }}
       </h1>
-      <h2>
+      <h2 class="text-center text-xl md:text-2xl">
         {{ $t('select-two-units-to-start') }}
       </h2>
 
@@ -29,7 +29,7 @@
                 :key="group.label">
         <div v-show="group.items.length">
           <Divider />
-          <h3>{{ $t(group.label) }}</h3>
+          <h3 class="pl-4">{{ $t(group.label) }}</h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 p-4">
             <UnitSelectionTile
               v-for="unit in group.items"
@@ -45,6 +45,7 @@
   </div>
 
   <UnitSelectionBar
+    class="hidden md:block"
     :from-unit="fromUnit"
     :to-unit="toUnit"
     @remove-from-unit="removeFromUnit"
@@ -56,6 +57,7 @@
   import {type UnitDataModel, type UnitGroup, UnitType} from "@/models/Unit.Models";
   import {createUnitDataModel} from "@/utils/UnitData.Utils";
   import UnitSelectionBar from "@/components/UnitSelectionBar.vue";
+  import {navigateToConverterPage} from "@/utils/Routing.Utils";
 
   const route = useRoute();
   const {t} = useI18n();
@@ -111,6 +113,16 @@
       fromUnit.value = unit;
     } else if(!toUnit.value) {
       toUnit.value = unit;
+    }
+
+    const breakPointsThatWillBeRedirected = ['xs', 'sm', 'md'];
+
+    if (fromUnit.value && toUnit.value && breakPointsThatWillBeRedirected.includes(checkBreakpoint())) {
+      navigateToConverterPage({
+        fromUnit: fromUnit.value.id,
+        toUnit: toUnit.value.id,
+        unitType: fromUnit.value.type,
+      })
     }
   }
 

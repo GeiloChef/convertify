@@ -4,14 +4,14 @@
       <h1>
         {{ $t('convertify') }}
       </h1>
-      <h2>
+      <h2 class="text-lg md:text-2xl px-2">
         {{ $t('best-way-to-convert', {from: $t(fromUnit.name), to: $t(toUnit.name)}) }}
       </h2>
     </div>
     <Card>
       <template #content>
         <div class="flex flex-col gap-4">
-          <div class="flex flex-row gap-8 justify-center items-center">
+          <div class="flex flex-col md:flex-row gap-2 md:gap-8 justify-center items-center">
             <UnitConverterInput
               v-model:input-value="valueFrom"
               v-model:selected-unit="fromUnit"
