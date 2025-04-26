@@ -25,7 +25,10 @@
     "time-based": "Time-Based",
     "troy-weight": "Troy Weight",
     "virtual": "Virtual/Simulation",
-    "weather": "Weather/Climatic"
+    "weather": "Weather/Climatic",
+    "standardTime": "Standard Time",
+    "precisionTime": "Precision Time",
+    "longTime": "Long-Term Time"
   },
   "home": "Home",
   "select-the-group-you-want-to-convert": "Select a group for unit conversion!",
@@ -38,7 +41,8 @@
     "data-velocity": "Data Velocity",
     "length": "Length",
     "velocity": "Velocity",
-    "weight": "Weight"
+    "weight": "Weight",
+    "time": "Time"
   },
   "welcome": "Welcome to the best converter!"
 }

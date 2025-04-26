@@ -1,6 +1,6 @@
 import {Unit} from "./Unit.Class";
 
-export type UnitId = LengthUnitId | MassUnitId | VelocityUnitId | DataVelocityUnitId | DataSizeUnitId;
+export type UnitId = LengthUnitId | MassUnitId | VelocityUnitId | DataVelocityUnitId | DataSizeUnitId | TimeUnitId;
 
 export enum LengthUnitId {
   Meter = "meter",
@@ -146,12 +146,30 @@ export enum DataSizeUnitId {
   Terabyte = "terabyte",
 }
 
+export enum TimeUnitId {
+  Second = "second",
+  Minute = "minute",
+  Hour = "hour",
+  Day = "day",
+  Week = "week",
+  Month = "month",
+  Year = "year",
+  Millisecond = "millisecond",
+  Microsecond = "microsecond",
+  Nanosecond = "nanosecond",
+  Decade = "decade",
+  Century = "century",
+  Millennium = "millennium",
+}
+
+
 export enum UnitType {
   Length = "length",
   Weight = "weight",
   Velocity = "velocity",
   DataVelocity = "data-velocity",
   DataSize = "data-size",
+  Time = "time"
 }
 
 export interface UnitGroup {

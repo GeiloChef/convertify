@@ -3,15 +3,18 @@
 * Routes inside the nuxt config.
 * */
 
-import { Unit } from "../models/Unit.Class";
+import {Unit} from "../models/Unit.Class";
 import {
-  type UnitDataModel,
+  DataSizeUnitId,
+  DataVelocityUnitId,
   LengthUnitId,
-  UnitType,
   MassUnitId,
-  type UnitTypeObject,
+  TimeUnitId,
+  type UnitDataModel,
   type UnitGroup,
-  VelocityUnitId, DataVelocityUnitId, DataSizeUnitId
+  UnitType,
+  type UnitTypeObject,
+  VelocityUnitId
 } from "../models/Unit.Models";
 
 export const getLengthUnits = (): UnitTypeObject => {
@@ -370,6 +373,49 @@ export const getDataSizeUnits = (): UnitTypeObject => {
   };
 };
 
+export const getTimeUnits = (): UnitTypeObject => {
+  const groups: UnitGroup[] = [
+    {
+      label: "group.standardTime",
+      code: "standardTime",
+      items: [
+        new Unit(TimeUnitId.Second, "unit.second", "symbol.second", UnitType.Time, 1),
+        new Unit(TimeUnitId.Minute, "unit.minute", "symbol.minute", UnitType.Time, 1 / 60),
+        new Unit(TimeUnitId.Hour, "unit.hour", "symbol.hour", UnitType.Time, 1 / 3600),
+        new Unit(TimeUnitId.Hour, "unit.day", "symbol.day", UnitType.Time, 1 / 86400),
+        new Unit(TimeUnitId.Week, "unit.week", "symbol.week", UnitType.Time, 1 / 604800),
+        new Unit(TimeUnitId.Month, "unit.month", "symbol.month", UnitType.Time, 1 / 2_629_746),
+        new Unit(TimeUnitId.Year, "unit.year", "symbol.year", UnitType.Time, 1 / 31_556_952),
+      ],
+    },
+    {
+      label: "group.precisionTime",
+      code: "precisionTime",
+      items: [
+        new Unit(TimeUnitId.Millisecond, "unit.millisecond", "symbol.millisecond", UnitType.Time, 1000),
+        new Unit(TimeUnitId.Microsecond, "unit.microsecond", "symbol.microsecond", UnitType.Time, 1_000_000),
+        new Unit(TimeUnitId.Nanosecond, "unit.nanosecond", "symbol.nanosecond", UnitType.Time, 1_000_000_000),
+      ],
+    },
+    {
+      label: "group.longTime",
+      code: "longTime",
+      items: [
+        new Unit(TimeUnitId.Decade, "unit.decade", "symbol.decade", UnitType.Time, 1 / 315_569_520),
+        new Unit(TimeUnitId.Century, "unit.century", "symbol.century", UnitType.Time, 1 / 3_155_695_200),
+        new Unit(TimeUnitId.Millennium, "unit.millennium", "symbol.millennium", UnitType.Time, 1 / 31_556_952_000),
+      ],
+    },
+  ];
+
+  return {
+    id: UnitType.Time,
+    label: 'type.time',
+    unitGroups: groups
+  };
+};
+
+
 
 export const createUnitDataModel = (): UnitDataModel => {
   return {
@@ -378,5 +424,6 @@ export const createUnitDataModel = (): UnitDataModel => {
     [UnitType.Velocity]: getVelocityUnits(),
     [UnitType.DataVelocity]: getDataVelocityUnits(),
     [UnitType.DataSize]: getDataSizeUnits(),
+    [UnitType.Time]: getTimeUnits(),
   };
 }
