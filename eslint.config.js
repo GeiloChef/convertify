@@ -3,10 +3,8 @@ import eslint from "@eslint/js";
 import vuePlugin from "eslint-plugin-vue"; // ✅ Import correctly
 import tsPlugin from "@typescript-eslint/eslint-plugin"; // ✅ Import correctly
 import tsParser from "@typescript-eslint/parser";
-import vueParser from "vue-eslint-parser"; // ✅ Ensure Vue parser is used
 import importPlugin from "eslint-plugin-import";
 import nuxtPlugin from "eslint-plugin-nuxt"; // ✅ Added Nuxt plugin
-
 
 
 export default [
