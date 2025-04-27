@@ -1,6 +1,6 @@
 <template>
   <div class="fixed h-16 bottom-0 w-screen -ml-2 sm:-ml-6 xl:-ml-32 bg-primary bg-green-500 flex justify-around items-center px-4 md:px-4 xl:px-32 select-none">
-    <div class="flex flex-row justify-around items-center gap-8">
+    <div class="flex flex-row justify-around items-center gap-8 h-full">
       <span class="small-text">Convert from</span>
 
       <div
