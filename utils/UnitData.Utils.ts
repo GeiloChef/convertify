@@ -5,6 +5,7 @@
 
 import {Unit} from "../models/Unit.Class";
 import {
+  AreaUnitId,
   DataSizeUnitId,
   DataVelocityUnitId,
   LengthUnitId,
@@ -415,6 +416,51 @@ export const getTimeUnits = (): UnitTypeObject => {
   };
 };
 
+export const getAreaUnits = (): UnitTypeObject => {
+  const groups: UnitGroup[] = [
+    {
+      label: "group.metric",
+      code: "metricArea",
+      items: [
+        new Unit(AreaUnitId.SquareMillimeter, "unit.square-millimeter", "symbol.square-millimeter", UnitType.Area, 1_000_000),
+        new Unit(AreaUnitId.SquareCentimeter, "unit.square-centimeter", "symbol.square-centimeter", UnitType.Area, 10_000),
+        new Unit(AreaUnitId.SquareMeter, "unit.square-meter", "symbol.square-meter", UnitType.Area, 1),
+        new Unit(AreaUnitId.SquareKilometer, "unit.square-kilometer", "symbol.square-kilometer", UnitType.Area, 1/1_000_000),
+        new Unit(AreaUnitId.Are, "unit.are", "symbol.are", UnitType.Area, 1/100),
+        new Unit(AreaUnitId.Hectare, "unit.hectare", "symbol.hectare", UnitType.Area, 1/10_000),
+        new Unit(AreaUnitId.Decare, "unit.decare", "symbol.decare", UnitType.Area, 1/1_000),
+        new Unit(AreaUnitId.Dunam, "unit.dunam", "symbol.dunam", UnitType.Area, 1/1_000),
+      ],
+    },
+    {
+      label: "group.imperial",
+      code: "imperialArea",
+      items: [
+        new Unit(AreaUnitId.SquareInch, "unit.square-inch", "symbol.square-inch", UnitType.Area, 1550.0031),
+        new Unit(AreaUnitId.SquareFoot, "unit.square-foot", "symbol.square-foot", UnitType.Area, 10.7639),
+        new Unit(AreaUnitId.SquareYard, "unit.square-yard", "symbol.square-yard", UnitType.Area, 1.19599),
+        new Unit(AreaUnitId.Acre, "unit.acre", "symbol.acre", UnitType.Area, 1/4046.8564224),
+        new Unit(AreaUnitId.SquareMile, "unit.square-mile", "symbol.square-mile", UnitType.Area, 1/2_589_988.110336),
+        new Unit(AreaUnitId.Rood, "unit.rood", "symbol.rood", UnitType.Area, 1/1_011.7141056),
+        new Unit(AreaUnitId.Perch, "unit.perch", "symbol.perch", UnitType.Area, 1/25.29285264),
+      ],
+    },
+    {
+      label: "group.scientific",
+      code: "scientificArea",
+      items: [
+        new Unit(AreaUnitId.Barn, "unit.barn", "symbol.barn", UnitType.Area, 1e+28),
+      ],
+    },
+  ];
+
+  return {
+    id: UnitType.Area,
+    label: 'type.area',
+    unitGroups: groups
+  };
+};
+
 
 
 export const createUnitDataModel = (): UnitDataModel => {
@@ -425,5 +471,17 @@ export const createUnitDataModel = (): UnitDataModel => {
     [UnitType.DataVelocity]: getDataVelocityUnits(),
     [UnitType.DataSize]: getDataSizeUnits(),
     [UnitType.Time]: getTimeUnits(),
+    [UnitType.Area]: getAreaUnits(),
   };
 }
+
+/*
+* todo: Add those types:
+*  - temperature (with factor)
+*  - area
+*  - volume
+*  - energy
+*  - pressure
+*  - power
+*  - currency (with api)
+* */

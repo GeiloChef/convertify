@@ -1,6 +1,6 @@
 import {Unit} from "./Unit.Class";
 
-export type UnitId = LengthUnitId | MassUnitId | VelocityUnitId | DataVelocityUnitId | DataSizeUnitId | TimeUnitId;
+export type UnitId = LengthUnitId | MassUnitId | VelocityUnitId | DataVelocityUnitId | DataSizeUnitId | TimeUnitId | AreaUnitId;
 
 export enum LengthUnitId {
   Meter = "meter",
@@ -162,6 +162,26 @@ export enum TimeUnitId {
   Millennium = "millennium",
 }
 
+export enum AreaUnitId {
+  SquareMillimeter = "square-millimeter",
+  SquareCentimeter = "square-centimeter",
+  SquareMeter = "square-meter",
+  SquareKilometer = "square-kilometer",
+  Are = "are",
+  Hectare = "hectare",
+  Decare = "decare",
+  Dunam = "dunam",
+  SquareInch = "square-inch",
+  SquareFoot = "square-foot",
+  SquareYard = "square-yard",
+  Acre = "acre",
+  SquareMile = "square-mile",
+  Rood = "rood",
+  Perch = "perch",
+  Barn = "barn",
+}
+
+
 
 export enum UnitType {
   Length = "length",
@@ -169,7 +189,8 @@ export enum UnitType {
   Velocity = "velocity",
   DataVelocity = "data-velocity",
   DataSize = "data-size",
-  Time = "time"
+  Time = "time",
+  Area = "area"
 }
 
 export interface UnitGroup {

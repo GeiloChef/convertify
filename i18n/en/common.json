@@ -42,7 +42,8 @@
     "length": "Length",
     "velocity": "Velocity",
     "weight": "Weight",
-    "time": "Time"
+    "time": "Time",
+    "area": "Area"
   },
   "welcome": "Welcome to the best converter!"
 }
